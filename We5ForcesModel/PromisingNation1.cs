@@ -435,11 +435,18 @@ namespace We5ForcesModel
 
         private void metroGrid1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
+            metroToolTip1.ToolTipTitle = "무기체계";
+            metroToolTip1.ToolTipIcon = ToolTipIcon.Info;
+            
+            string Column4 = "  ◦ 무기체계 운용여부 (정량)\n" +
+                "- ☆(매우 높음) : 검토대상국가가 해당 무기체계를 보유한 경우(상륙돌격장갑차 탑재용)\n" +
+              "- ○(높음) : 유사 / 대체 무기체계를 보유한 경우(소형전술차량탑재 / 지상거치용)\n" +
+               " - △(보통) : 기타 비슷한 형태의 무기체계를 보유한 경우\n" +
+              "- X(낮음) : 해당 무기체계와 동일하거나 유사/ 대체 또는 비슷한 형태의 무기체계를 미보유한 경우\n";
             if (e.RowIndex == 0)
-
             {
                 var cell = metroGrid1.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                metroToolTip1.SetToolTip(this.metroGrid1, "AAA");
+                metroToolTip1.SetToolTip(this.metroGrid1, Column4);
                 metroToolTip1.ShowAlways = true;
             }
             else
@@ -447,6 +454,11 @@ namespace We5ForcesModel
                 metroToolTip1.Hide(this.metroGrid1);
             }
             
+
+        }
+
+        private void metroToolTip1_Popup(object sender, PopupEventArgs e)
+        {
 
         }
     }

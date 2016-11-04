@@ -410,6 +410,7 @@ namespace We5ForcesModel
 
         private void geoMap1_LandClick(object arg1, LiveCharts.Maps.MapData arg2)
         {
+            
         }
 
         private void metroGrid2_SelectionChanged(object sender, EventArgs e)

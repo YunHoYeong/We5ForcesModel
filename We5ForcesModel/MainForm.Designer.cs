@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation4 = new BunifuAnimatorNS.Animation();
             BunifuAnimatorNS.Animation animation3 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainFrm));
+            BunifuAnimatorNS.Animation animation4 = new BunifuAnimatorNS.Animation();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.SlideMenu = new System.Windows.Forms.Panel();
             this.bunifuFlatButton6 = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -101,8 +101,8 @@
             this.bunifuFlatButton6.BorderRadius = 0;
             this.bunifuFlatButton6.ButtonText = "      레포트 생성";
             this.bunifuFlatButton6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LogoAnimation.SetDecoration(this.bunifuFlatButton6, BunifuAnimatorNS.DecorationType.None);
             this.PanelAnimation.SetDecoration(this.bunifuFlatButton6, BunifuAnimatorNS.DecorationType.None);
+            this.LogoAnimation.SetDecoration(this.bunifuFlatButton6, BunifuAnimatorNS.DecorationType.None);
             this.bunifuFlatButton6.DisabledColor = System.Drawing.Color.Gray;
             this.bunifuFlatButton6.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuFlatButton6.Iconcolor = System.Drawing.Color.Transparent;
@@ -137,8 +137,8 @@
             this.bunifuFlatButton5.BorderRadius = 0;
             this.bunifuFlatButton5.ButtonText = "      시장진입 가능성 분석";
             this.bunifuFlatButton5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LogoAnimation.SetDecoration(this.bunifuFlatButton5, BunifuAnimatorNS.DecorationType.None);
             this.PanelAnimation.SetDecoration(this.bunifuFlatButton5, BunifuAnimatorNS.DecorationType.None);
+            this.LogoAnimation.SetDecoration(this.bunifuFlatButton5, BunifuAnimatorNS.DecorationType.None);
             this.bunifuFlatButton5.DisabledColor = System.Drawing.Color.Gray;
             this.bunifuFlatButton5.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuFlatButton5.Iconcolor = System.Drawing.Color.Transparent;
@@ -173,8 +173,8 @@
             this.bunifuFlatButton4.BorderRadius = 0;
             this.bunifuFlatButton4.ButtonText = "      수출유망 국가분석";
             this.bunifuFlatButton4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LogoAnimation.SetDecoration(this.bunifuFlatButton4, BunifuAnimatorNS.DecorationType.None);
             this.PanelAnimation.SetDecoration(this.bunifuFlatButton4, BunifuAnimatorNS.DecorationType.None);
+            this.LogoAnimation.SetDecoration(this.bunifuFlatButton4, BunifuAnimatorNS.DecorationType.None);
             this.bunifuFlatButton4.DisabledColor = System.Drawing.Color.Gray;
             this.bunifuFlatButton4.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuFlatButton4.Iconcolor = System.Drawing.Color.Transparent;
@@ -227,8 +227,8 @@
             this.bunifuFlatButton3.BorderRadius = 0;
             this.bunifuFlatButton3.ButtonText = "      원천기술 분석";
             this.bunifuFlatButton3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LogoAnimation.SetDecoration(this.bunifuFlatButton3, BunifuAnimatorNS.DecorationType.None);
             this.PanelAnimation.SetDecoration(this.bunifuFlatButton3, BunifuAnimatorNS.DecorationType.None);
+            this.LogoAnimation.SetDecoration(this.bunifuFlatButton3, BunifuAnimatorNS.DecorationType.None);
             this.bunifuFlatButton3.DisabledColor = System.Drawing.Color.Gray;
             this.bunifuFlatButton3.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuFlatButton3.Iconcolor = System.Drawing.Color.Transparent;
@@ -263,8 +263,8 @@
             this.bunifuFlatButton2.BorderRadius = 0;
             this.bunifuFlatButton2.ButtonText = "      대체/유사 무기체계 분석";
             this.bunifuFlatButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LogoAnimation.SetDecoration(this.bunifuFlatButton2, BunifuAnimatorNS.DecorationType.None);
             this.PanelAnimation.SetDecoration(this.bunifuFlatButton2, BunifuAnimatorNS.DecorationType.None);
+            this.LogoAnimation.SetDecoration(this.bunifuFlatButton2, BunifuAnimatorNS.DecorationType.None);
             this.bunifuFlatButton2.DisabledColor = System.Drawing.Color.Gray;
             this.bunifuFlatButton2.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuFlatButton2.Iconcolor = System.Drawing.Color.Transparent;
@@ -333,8 +333,8 @@
             this.header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
             this.header.Controls.Add(this.bunifuCustomLabel1);
             this.header.Controls.Add(this.panel2);
-            this.PanelAnimation.SetDecoration(this.header, BunifuAnimatorNS.DecorationType.None);
             this.LogoAnimation.SetDecoration(this.header, BunifuAnimatorNS.DecorationType.None);
+            this.PanelAnimation.SetDecoration(this.header, BunifuAnimatorNS.DecorationType.None);
             this.header.Dock = System.Windows.Forms.DockStyle.Top;
             this.header.Location = new System.Drawing.Point(0, 0);
             this.header.Name = "header";
@@ -344,8 +344,8 @@
             // bunifuCustomLabel1
             // 
             this.bunifuCustomLabel1.AutoSize = true;
-            this.LogoAnimation.SetDecoration(this.bunifuCustomLabel1, BunifuAnimatorNS.DecorationType.None);
             this.PanelAnimation.SetDecoration(this.bunifuCustomLabel1, BunifuAnimatorNS.DecorationType.None);
+            this.LogoAnimation.SetDecoration(this.bunifuCustomLabel1, BunifuAnimatorNS.DecorationType.None);
             this.bunifuCustomLabel1.Font = new System.Drawing.Font("나눔고딕", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.White;
             this.bunifuCustomLabel1.Location = new System.Drawing.Point(13, 13);
@@ -359,8 +359,8 @@
             this.panel2.Controls.Add(this.bunifuImageButton1);
             this.panel2.Controls.Add(this.bunifuImageButton2);
             this.panel2.Controls.Add(this.bunifuImageButton3);
-            this.PanelAnimation.SetDecoration(this.panel2, BunifuAnimatorNS.DecorationType.None);
             this.LogoAnimation.SetDecoration(this.panel2, BunifuAnimatorNS.DecorationType.None);
+            this.PanelAnimation.SetDecoration(this.panel2, BunifuAnimatorNS.DecorationType.None);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(986, 0);
             this.panel2.Name = "panel2";
@@ -429,8 +429,8 @@
             // 
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
-            this.PanelAnimation.SetDecoration(this.panel1, BunifuAnimatorNS.DecorationType.None);
             this.LogoAnimation.SetDecoration(this.panel1, BunifuAnimatorNS.DecorationType.None);
+            this.PanelAnimation.SetDecoration(this.panel1, BunifuAnimatorNS.DecorationType.None);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(260, 52);
             this.panel1.Name = "panel1";
@@ -444,8 +444,8 @@
             this.panel4.Controls.Add(this.LblPage);
             this.panel4.Controls.Add(this.NextButton);
             this.panel4.Controls.Add(this.PreviouslyButton);
-            this.PanelAnimation.SetDecoration(this.panel4, BunifuAnimatorNS.DecorationType.None);
             this.LogoAnimation.SetDecoration(this.panel4, BunifuAnimatorNS.DecorationType.None);
+            this.PanelAnimation.SetDecoration(this.panel4, BunifuAnimatorNS.DecorationType.None);
             this.panel4.Location = new System.Drawing.Point(7, 720);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(825, 48);
@@ -455,8 +455,8 @@
             // 
             this.LblPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.LblPage.AutoSize = true;
-            this.LogoAnimation.SetDecoration(this.LblPage, BunifuAnimatorNS.DecorationType.None);
             this.PanelAnimation.SetDecoration(this.LblPage, BunifuAnimatorNS.DecorationType.None);
+            this.LogoAnimation.SetDecoration(this.LblPage, BunifuAnimatorNS.DecorationType.None);
             this.LblPage.Font = new System.Drawing.Font("나눔고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.LblPage.Location = new System.Drawing.Point(391, 15);
             this.LblPage.Name = "LblPage";
@@ -506,8 +506,8 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PanelAnimation.SetDecoration(this.panel3, BunifuAnimatorNS.DecorationType.None);
             this.LogoAnimation.SetDecoration(this.panel3, BunifuAnimatorNS.DecorationType.None);
+            this.PanelAnimation.SetDecoration(this.panel3, BunifuAnimatorNS.DecorationType.None);
             this.panel3.Location = new System.Drawing.Point(7, 6);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(825, 708);
@@ -517,27 +517,6 @@
             // 
             this.LogoAnimation.AnimationType = BunifuAnimatorNS.AnimationType.Particles;
             this.LogoAnimation.Cursor = null;
-            animation4.AnimateOnlyDifferences = true;
-            animation4.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.BlindCoeff")));
-            animation4.LeafCoeff = 0F;
-            animation4.MaxTime = 1F;
-            animation4.MinTime = 0F;
-            animation4.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicCoeff")));
-            animation4.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicShift")));
-            animation4.MosaicSize = 1;
-            animation4.Padding = new System.Windows.Forms.Padding(100, 50, 100, 150);
-            animation4.RotateCoeff = 0F;
-            animation4.RotateLimit = 0F;
-            animation4.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.ScaleCoeff")));
-            animation4.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.SlideCoeff")));
-            animation4.TimeCoeff = 2F;
-            animation4.TransparencyCoeff = 0F;
-            this.LogoAnimation.DefaultAnimation = animation4;
-            // 
-            // PanelAnimation
-            // 
-            this.PanelAnimation.AnimationType = BunifuAnimatorNS.AnimationType.Custom;
-            this.PanelAnimation.Cursor = null;
             animation3.AnimateOnlyDifferences = true;
             animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
             animation3.LeafCoeff = 0F;
@@ -545,15 +524,36 @@
             animation3.MinTime = 0F;
             animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
             animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
-            animation3.MosaicSize = 0;
-            animation3.Padding = new System.Windows.Forms.Padding(0);
+            animation3.MosaicSize = 1;
+            animation3.Padding = new System.Windows.Forms.Padding(100, 50, 100, 150);
             animation3.RotateCoeff = 0F;
             animation3.RotateLimit = 0F;
             animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
             animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
-            animation3.TimeCoeff = 0F;
+            animation3.TimeCoeff = 2F;
             animation3.TransparencyCoeff = 0F;
-            this.PanelAnimation.DefaultAnimation = animation3;
+            this.LogoAnimation.DefaultAnimation = animation3;
+            // 
+            // PanelAnimation
+            // 
+            this.PanelAnimation.AnimationType = BunifuAnimatorNS.AnimationType.Custom;
+            this.PanelAnimation.Cursor = null;
+            animation4.AnimateOnlyDifferences = true;
+            animation4.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.BlindCoeff")));
+            animation4.LeafCoeff = 0F;
+            animation4.MaxTime = 1F;
+            animation4.MinTime = 0F;
+            animation4.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicCoeff")));
+            animation4.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicShift")));
+            animation4.MosaicSize = 0;
+            animation4.Padding = new System.Windows.Forms.Padding(0);
+            animation4.RotateCoeff = 0F;
+            animation4.RotateLimit = 0F;
+            animation4.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.ScaleCoeff")));
+            animation4.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.SlideCoeff")));
+            animation4.TimeCoeff = 0F;
+            animation4.TransparencyCoeff = 0F;
+            this.PanelAnimation.DefaultAnimation = animation4;
             // 
             // mainFrm
             // 

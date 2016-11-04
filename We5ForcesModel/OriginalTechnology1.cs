@@ -16,13 +16,13 @@ namespace We5ForcesModel
         {
             InitializeComponent();
         }
+        // RCWS 기준
+       public static string[][] OriginalTechnology = new string[6][];
+        public static string[][][] SubTechnology = new string[6][][];
+        public static string[][] DescriptionTechonology = new string[6][];
+        public static bool[][] MainTechnology = new bool[6][];
         private void OriginalTechIntroduction()
         {
-            // RCWS 기준
-            string[][] OriginalTechnology = new string[6][];
-            string[][] DescriptionTechonology = new string[6][];
-            bool[][] MainTechnology = new bool[6][];
-
             OriginalTechnology[2] = new string[4] { "영상기술", "사격통제기술", "구동/제어기술", "운용기술" };
             DescriptionTechonology[2] = new string[4]
             {
@@ -32,11 +32,19 @@ namespace We5ForcesModel
                 "- 영상장치로부터 획득한 영상을 전시하고, 사수가 시스템 운용 및 사격을 위한 조이스틱으로 구성"
             };
             MainTechnology[2] = new bool[4] { false, false, true, false };
+            SubTechnology[2] = new string[4][]
+             {
+                 new string[] { "주간관측기술", "열영상 감지 기능", "거리측정기술", "내부 구성품 장착/보호기술" },
+                 new string[] { "원격사격제어기술", "자동추적기술", "탄도보정기술", "표적전시기술" },
+                 new string[] { "구동장치(무장/선회)기술", "위치센서 기술", "안정화제어기술", "자이로센서기술" },
+                 new string[] { "전시기용 S/W 기술", "구동설계기술", "운용케이블/전원기술" }
+             };
 
             //  lbl_Introduction.Text = Introduction[2];
             metroGrid1.Rows.Clear();
             metroGrid1.RowHeadersVisible = false;
             metroGrid1.ColumnCount = 2;
+
 
             metroGrid1.Columns[0].Name = "기술명";
             metroGrid1.Columns[1].Name = "기술내용";
@@ -59,6 +67,7 @@ namespace We5ForcesModel
             for(int i = 0; i < OriginalTechnology[mainFrm.CurrentWeapon].Length; i++ )
             {
                 metroGrid1.Rows.Add(" " + OriginalTechnology[mainFrm.CurrentWeapon][i] + " " , DescriptionTechonology[mainFrm.CurrentWeapon][i]);
+                if(MainTechnology[mainFrm.CurrentWeapon][i] == true) { metroGrid1.Rows[i].Cells[0].Style.BackColor = Color.FromArgb(255, 192, 0); }
             }
             
             for(int i = 0; i < metroGrid1.RowCount; i++)
@@ -83,11 +92,15 @@ namespace We5ForcesModel
                 metroGrid1.Rows[i].Cells[0].Style.ForeColor = System.Drawing.Color.Black;
             }
 
+            for (int i = 0; i < OriginalTechnology[mainFrm.CurrentWeapon].Length; i++)
+            {
+                if (MainTechnology[mainFrm.CurrentWeapon][i] == true) { metroGrid1.Rows[i].Cells[0].Style.BackColor = Color.FromArgb(255, 192, 0); }
+            }
             foreach (DataGridViewColumn column in metroGrid1.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
-                metroGrid1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            metroGrid1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             metroGrid1.Columns[0].Width = (int)(metroGrid1.Width * 0.15);
             metroGrid1.Columns[1].Width = (int)(metroGrid1.Width * 0.84);
             //   metroGrid1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
@@ -97,13 +110,75 @@ namespace We5ForcesModel
 
             X = metroGrid1.ColumnHeadersHeight + metroGrid1.Rows.Cast<DataGridViewRow>().Sum(r => r.Height);
             lbl2.Location = new Point(metroGrid1.Location.X, X + metroGrid1.Location.Y + 20);
-//            metroGrid2.Location = new Point(lbl2.Location.X, lbl2.Location.Y + 20);
+            //            metroGrid2.Location = new Point(lbl2.Location.X, lbl2.Location.Y + 20);
 
+            this.metroGrid1.DefaultCellStyle.Font = new Font("나눔고딕", 10);
         }
+        private void DomesticTechnology()
+        {
+            //  lbl_Introduction.Text = Introduction[2];
+            metroGrid2.Rows.Clear();
+            metroGrid2.RowHeadersVisible = false;
+            metroGrid2.ColumnCount = 9;
 
+            metroGrid2.Columns[0].Name = "구 분";
+            metroGrid2.Columns[1].Name = "선진국\n기술수준";
+            metroGrid2.Columns[2].Name = "국내\n기술수준";
+            metroGrid2.Columns[3].Name = "기술적\n파급효과";
+            metroGrid2.Columns[4].Name = "경제적\n파급효과";
+            metroGrid2.Columns[5].Name = "보호등급";
+            metroGrid2.Columns[6].Name = "기술도입\n가능성";
+            metroGrid2.Columns[7].Name = "민군우위\n기술";
+            metroGrid2.Columns[8].Name = "난이도";
+
+            // Clumn Header 변경
+            // 개요
+            metroGrid2.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(32, 56, 100);
+            metroGrid2.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+
+            // 무기체계명 
+            DataGridViewColumn dataGridViewColumn = metroGrid2.Columns[0];
+            dataGridViewColumn.HeaderCell.Style.BackColor = Color.FromArgb(91, 155, 213);
+            dataGridViewColumn.HeaderCell.Style.ForeColor = Color.White;
+
+            for(int i = 0; i < MainTechnology[mainFrm.CurrentWeapon].Length; i++)
+            {
+                if(MainTechnology[mainFrm.CurrentWeapon][i] == true)
+                {
+                    for (int j = 0; j < SubTechnology[mainFrm.CurrentWeapon][i].Length; j++)
+                    {
+                        metroGrid2.Rows.Add(SubTechnology[mainFrm.CurrentWeapon][i][j]);
+                    }
+                }
+            }
+            metroGrid2.CurrentCell = null;
+            for (int i = 0; i < metroGrid2.RowCount; i++)
+            {
+                for (int j = 1; j < metroGrid2.ColumnCount; j++)
+                {
+                    metroGrid2.Rows[i].Cells[j].Style.BackColor = System.Drawing.Color.White;
+                }
+                metroGrid2.Rows[i].Cells[0].Style.BackColor = System.Drawing.Color.FromArgb(222, 235, 247);
+                metroGrid2.Rows[i].Cells[0].Style.ForeColor = System.Drawing.Color.Black;
+            }
+            foreach (DataGridViewColumn column in metroGrid2.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            for (int i = 0; i < metroGrid2.ColumnCount; i++)
+            {
+                metroGrid2.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+            int X = metroGrid2.ColumnHeadersHeight + metroGrid2.Rows.Cast<DataGridViewRow>().Sum(r => r.Height);
+            metroGrid2.Height = X + 10;
+
+            X = metroGrid2.ColumnHeadersHeight + metroGrid2.Rows.Cast<DataGridViewRow>().Sum(r => r.Height);
+            this.metroGrid2.DefaultCellStyle.Font = new Font("나눔고딕", 10);
+        }
         private void OriginalTechnology1_Load(object sender, EventArgs e)
         {
             OriginalTechIntroduction();
+            DomesticTechnology();
         }
     }
 }
