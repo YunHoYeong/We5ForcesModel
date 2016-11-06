@@ -17,29 +17,56 @@ namespace We5ForcesModel
             InitializeComponent();
         }
         // RCWS 기준
-       public static string[][] OriginalTechnology = new string[6][];
+        public static string[][] OriginalTechnology = new string[6][];
         public static string[][][] SubTechnology = new string[6][][];
         public static string[][] DescriptionTechonology = new string[6][];
         public static bool[][] MainTechnology = new bool[6][];
-        private void OriginalTechIntroduction()
+        public static string[][][][] TechnologyLevel = new string[6][][][];
+        private void Initialize()
         {
-            OriginalTechnology[2] = new string[4] { "영상기술", "사격통제기술", "구동/제어기술", "운용기술" };
-            DescriptionTechonology[2] = new string[4]
+            OriginalTechnology[2] = new string[] { "영상기술", "사격통제기술", "구동/제어기술", "운용기술" };
+            DescriptionTechonology[2] = new string[]
             {
                 "- 주/야간 표적의 식별 탐지를 위한 기술\n- 주간관측장비, 열영상장비, 거리측정기(LRF), 하우징 조립체로 구성",
                 "- K-4와 K-6 기관총을 장착하고, 제어장치로부터 제어입력을 통해 장전과 격발을 수행\n- 완충장비를 사용하여 사격시 충격을 완화시키는 기능",
                 "- 구동장치는 구조물 조립체, 구동부 조립체, 슬립링 조립체로 구성\n- 제어장치는 구동장치를 제어하기 위한 안정화 제어기능과 외부를 측정하기 위한 자이로센서로 구성\n- 특히 기동 및 사격시 외부충격 및 진동에 대한 안정화 및 시스템 제어 성능이 요구",
                 "- 영상장치로부터 획득한 영상을 전시하고, 사수가 시스템 운용 및 사격을 위한 조이스틱으로 구성"
             };
-            MainTechnology[2] = new bool[4] { false, false, true, false };
-            SubTechnology[2] = new string[4][]
+            MainTechnology[2] = new bool[] { false, false, true, false };
+            SubTechnology[2] = new string[][]
              {
                  new string[] { "주간관측기술", "열영상 감지 기능", "거리측정기술", "내부 구성품 장착/보호기술" },
                  new string[] { "원격사격제어기술", "자동추적기술", "탄도보정기술", "표적전시기술" },
-                 new string[] { "구동장치(무장/선회)기술", "위치센서 기술", "안정화제어기술", "자이로센서기술" },
+                 new string[] { "구동장치기술", "위치센서기술", "안정화제어기술", "자이로센서기술" },
                  new string[] { "전시기용 S/W 기술", "구동설계기술", "운용케이블/전원기술" }
              };
+            TechnologyLevel[2] = new string[][][]
+            {
+                new string[][]
+                {
 
+                },
+                new string[][]
+                {
+
+                },
+                new string[][]
+                {
+                    new string[] {"93","76","보통","높음","보통","낮음","국방>민간","높음"},
+                    new string[] {"93","85","보통","낮음","보통","낮음","국방≒민간","보통"},
+                    new string[] {"92","75","높음","높음","보통","낮음","국방>민간","높음"},
+                    new string[] {"92","81","보통","낮음","보통","낮음","국방≒민간","보통"},
+                },
+                new string[][]
+                {
+
+                }
+            };
+
+        }
+        private void OriginalTechIntroduction()
+        {
+            
             //  lbl_Introduction.Text = Introduction[2];
             metroGrid1.Rows.Clear();
             metroGrid1.RowHeadersVisible = false;
@@ -109,8 +136,8 @@ namespace We5ForcesModel
             metroGrid1.Height = X + 10;
 
             X = metroGrid1.ColumnHeadersHeight + metroGrid1.Rows.Cast<DataGridViewRow>().Sum(r => r.Height);
-            lbl2.Location = new Point(metroGrid1.Location.X, X + metroGrid1.Location.Y + 20);
-            //            metroGrid2.Location = new Point(lbl2.Location.X, lbl2.Location.Y + 20);
+            lbl2.Location = new Point(metroGrid1.Location.X, X + metroGrid1.Location.Y + 35);
+            metroGrid2.Location = new Point(lbl2.Location.X, lbl2.Location.Y + 30);
 
             this.metroGrid1.DefaultCellStyle.Font = new Font("나눔고딕", 10);
         }
@@ -137,17 +164,27 @@ namespace We5ForcesModel
             metroGrid2.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
 
             // 무기체계명 
+            /*
             DataGridViewColumn dataGridViewColumn = metroGrid2.Columns[0];
             dataGridViewColumn.HeaderCell.Style.BackColor = Color.FromArgb(91, 155, 213);
             dataGridViewColumn.HeaderCell.Style.ForeColor = Color.White;
+            */
 
-            for(int i = 0; i < MainTechnology[mainFrm.CurrentWeapon].Length; i++)
+            for (int i = 0; i < MainTechnology[mainFrm.CurrentWeapon].Length; i++)
             {
                 if(MainTechnology[mainFrm.CurrentWeapon][i] == true)
                 {
                     for (int j = 0; j < SubTechnology[mainFrm.CurrentWeapon][i].Length; j++)
                     {
                         metroGrid2.Rows.Add(SubTechnology[mainFrm.CurrentWeapon][i][j]);
+                        for(int k = 0; k < TechnologyLevel[mainFrm.CurrentWeapon][i][j].Length; k++)
+                        {
+                            if(k == 0 || k == 1)
+                            {
+                                metroGrid2.Rows[j].Cells[k + 1].Value = TechnologyLevel[mainFrm.CurrentWeapon][i][j][k] + "%";
+                            }
+                            else { metroGrid2.Rows[j].Cells[k + 1].Value = TechnologyLevel[mainFrm.CurrentWeapon][i][j][k]; }
+                        }
                     }
                 }
             }
@@ -165,10 +202,19 @@ namespace We5ForcesModel
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
-            for (int i = 0; i < metroGrid2.ColumnCount; i++)
+            for (int i = 1; i < metroGrid2.ColumnCount; i++)
             {
                 metroGrid2.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                metroGrid2.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
+            for (int i = 0; i < metroGrid2.ColumnCount; i++) { metroGrid2.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; }
+                
+            
+            foreach (DataGridViewRow row in metroGrid2.Rows)
+            {
+                row.Height = (int)(row.Height * 1.5);
+            }
+
             int X = metroGrid2.ColumnHeadersHeight + metroGrid2.Rows.Cast<DataGridViewRow>().Sum(r => r.Height);
             metroGrid2.Height = X + 10;
 
@@ -177,8 +223,19 @@ namespace We5ForcesModel
         }
         private void OriginalTechnology1_Load(object sender, EventArgs e)
         {
+            Initialize();
             OriginalTechIntroduction();
             DomesticTechnology();
+        }
+
+        private void metroGrid1_SelectionChanged(object sender, EventArgs e)
+        {
+            metroGrid1.ClearSelection();
+        }
+
+        private void metroGrid2_SelectionChanged(object sender, EventArgs e)
+        {
+            metroGrid2.ClearSelection();
         }
     }
 }
