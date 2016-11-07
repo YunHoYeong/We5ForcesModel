@@ -20,7 +20,10 @@ namespace We5ForcesModel
     public partial class Competition1 : Form
     {
         public string[] AreaName = new string[] { "미주", "유럽", "아시아", "중동", "아프리카" };
+        public static string[] CompetitionDrawMap;
 
+        public static List<string> WorldCode = new List<string>();
+        public static List<string> WorldName = new List<string>();
         public Competition1()
         {
             InitializeComponent();
@@ -29,10 +32,6 @@ namespace We5ForcesModel
             var xmlStr = File.ReadAllText("Maps/World.xml");
             string pattern = @"<(.*)>(.*)</\1>";
             
-            List<string> WorldCode = new List<string>();
-            List<string> WorldName = new List<string>();
-            
-
             foreach (Match m in Regex.Matches(xmlStr, pattern))
             {
                 if (m.Groups[1].Value == "Id") { WorldCode.Add(m.Groups[2].Value); }
@@ -42,7 +41,7 @@ namespace We5ForcesModel
 
             // 무기체계 DB에서 국가 뭐뭐있는지 추출해옴
             // 경쟁무기에 뭐가 있는지 추출해옴
-            string[] CompetitionDrawMap = new string[mainFrm.CompetitionData.GetLength(0)];
+            CompetitionDrawMap = new string[mainFrm.CompetitionData.GetLength(0)];
             for (int i = 1; i < mainFrm.CompetitionData.GetLength(0); i++)
             {
                 CompetitionDrawMap[i - 1] = mainFrm.CompetitionData[i, 1].ToString();
@@ -282,7 +281,6 @@ namespace We5ForcesModel
         }
         private void DrawColumnChart()
         {
-            
             // 경쟁무기에 뭐가 있는지 추출해옴
             string[] CompetitionWeapon = new string[mainFrm.CompetitionData.GetLength(0)];
             for (int i = 1; i < mainFrm.CompetitionData.GetLength(0); i++)
@@ -410,7 +408,8 @@ namespace We5ForcesModel
 
         private void geoMap1_LandClick(object arg1, LiveCharts.Maps.MapData arg2)
         {
-            
+            bigMap frmBigMap = new bigMap();
+            frmBigMap.Show();
         }
 
         private void metroGrid2_SelectionChanged(object sender, EventArgs e)
@@ -434,6 +433,12 @@ namespace We5ForcesModel
         private void bunifuCustomLabel4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void myChart_DataClick(object arg1, ChartPoint arg2)
+        {
+            bigChart1 FrmbigChart1 = new bigChart1();
+            FrmbigChart1.Show();
         }
     }
 }

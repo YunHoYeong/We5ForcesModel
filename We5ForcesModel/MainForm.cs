@@ -176,6 +176,35 @@ namespace We5ForcesModel
             SubForm.Show();
         }
         #endregion
+        #region 2.대체/유사무기체계 SubPage
+        private void Show_Substitute1_Form_In_Panel()
+        {
+            panel3.Controls.Clear();
+            Substitute1 SubForm = new Substitute1();
+            SubForm.TopLevel = false;
+            SubForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel3.Controls.Add(SubForm);
+            SubForm.Show();
+        }
+        private void Show_Substitute2_Form_In_Panel()
+        {
+            panel3.Controls.Clear();
+            Substitute2 SubForm = new Substitute2();
+            SubForm.TopLevel = false;
+            SubForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel3.Controls.Add(SubForm);
+            SubForm.Show();
+        }
+        private void Show_Substitute3_Form_In_Panel()
+        {
+            panel3.Controls.Clear();
+            Substitute3 SubForm = new Substitute3();
+            SubForm.TopLevel = false;
+            SubForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel3.Controls.Add(SubForm);
+            SubForm.Show();
+        }
+        #endregion
         #region 3.원천기술식별 SubPage
         private void Show_OriginalTechnology1_Form_In_Panel()
         {
@@ -253,8 +282,8 @@ namespace We5ForcesModel
                 if (CurrentMenu == 0 && CurrentPage == 2) { Show_Competition3_Form_In_Panel(); }
 
                 //대체/유사무기체계
-                if (CurrentMenu == 1 && CurrentPage == 1) { }
-                if (CurrentMenu == 1 && CurrentPage == 2) { }
+                if (CurrentMenu == 1 && CurrentPage == 1) { Show_Substitute2_Form_In_Panel(); }
+                if (CurrentMenu == 1 && CurrentPage == 2) { Show_Substitute3_Form_In_Panel(); }
 
                 //원천기술 분석
                 if (CurrentMenu == 2 && CurrentPage == 1) { Show_OriginalTechnology2_Form_In_Panel(); }
@@ -282,8 +311,8 @@ namespace We5ForcesModel
                 if (CurrentMenu == 0 && CurrentPage == 1) { Show_Competition2_Form_In_Panel(); }
                 
                 //대체/유사무기체계
-                if (CurrentMenu == 1 && CurrentPage == 0) { }
-                if (CurrentMenu == 1 && CurrentPage == 1) { }
+                if (CurrentMenu == 1 && CurrentPage == 0) { Show_Substitute1_Form_In_Panel(); }
+                if (CurrentMenu == 1 && CurrentPage == 1) { Show_Substitute2_Form_In_Panel(); }
 
                 //원천기술 분석
                 if (CurrentMenu == 2 && CurrentPage == 0) { Show_OriginalTechnology1_Form_In_Panel(); }
@@ -315,6 +344,8 @@ namespace We5ForcesModel
             CurrentMenu = 1;
             CurrentPage = 0;
             UpdatePagesInfo();
+
+            Show_Substitute1_Form_In_Panel();
         }
 
         private void bunifuFlatButton3_Click(object sender, EventArgs e)

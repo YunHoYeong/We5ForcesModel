@@ -251,6 +251,7 @@
             this.myChart.Size = new System.Drawing.Size(546, 228);
             this.myChart.TabIndex = 10;
             this.myChart.Text = "cartesianChart1";
+            this.myChart.DataClick += new System.Action<object, LiveCharts.ChartPoint>(this.myChart_DataClick);
             // 
             // Competition1
             // 
