@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,14 +20,12 @@ namespace We5ForcesModel
         }
         private void DrawCharts()
         {
-            
             myChart.Series = new SeriesCollection
             {
                 new ColumnSeries { Title = "",
                     Values = new ChartValues<double>(Competition2.Prices),
                     DataLabels = true,
                     LabelPoint = point => point.Y + "M"}
-
             };
             myChart.AxisX.Add(new Axis
             {
@@ -41,7 +38,6 @@ namespace We5ForcesModel
                 Title = "Prices($M)",
                 LabelFormatter = value => value.ToString("N")
             });
-          
         }
         private void Conclusion()
         {
@@ -142,6 +138,8 @@ namespace We5ForcesModel
             {
                 metroGrid2.Rows[i].Cells[1].Value = Competition2.Prices[i-1];
             }
+            int X = metroGrid2.Rows.Cast<DataGridViewRow>().Sum(r => r.Height);
+            metroGrid2.Height = X + 10;
         }
         private void metroGrid2_SelectionChanged(object sender, EventArgs e)
         {
@@ -159,6 +157,12 @@ namespace We5ForcesModel
                 metroGrid2.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.ForeColor = Color.White;
             }
 
+        }
+
+        private void myChart_DataClick(object arg1, ChartPoint arg2)
+        {
+            bigChartCompetition3 FrmBigChartCompetition = new bigChartCompetition3();
+            FrmBigChartCompetition.Show();
         }
     }
 }

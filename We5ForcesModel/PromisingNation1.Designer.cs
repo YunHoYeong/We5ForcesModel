@@ -114,6 +114,7 @@
             this.cartesianChart1.Size = new System.Drawing.Size(806, 323);
             this.cartesianChart1.TabIndex = 7;
             this.cartesianChart1.Text = "cartesianChart1";
+            this.cartesianChart1.DataClick += new System.Action<object, LiveCharts.ChartPoint>(this.cartesianChart1_DataClick);
             // 
             // bunifuCustomLabel1
             // 

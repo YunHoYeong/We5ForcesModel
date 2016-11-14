@@ -61,6 +61,7 @@
             this.myChart.Size = new System.Drawing.Size(796, 206);
             this.myChart.TabIndex = 6;
             this.myChart.Text = "cartesianChart1";
+            this.myChart.DataClick += new System.Action<object, LiveCharts.ChartPoint>(this.myChart_DataClick);
             // 
             // metroGrid2
             // 

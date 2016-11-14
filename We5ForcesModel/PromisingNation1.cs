@@ -77,11 +77,11 @@ namespace We5ForcesModel
             }
 
         }
-        public SeriesCollection SeriesCollection { get; set; }
-        public ScatterSeries[] Quartile1 { get; set; }
-        public ScatterSeries[] Quartile2 { get; set; }
-        public ScatterSeries[] Quartile3 { get; set; }
-        public ScatterSeries[] Quartile4 { get; set; }
+        public static SeriesCollection SeriesCollection { get; set; }
+        public static ScatterSeries[] Quartile1 { get; set; }
+        public static ScatterSeries[] Quartile2 { get; set; }
+        public static ScatterSeries[] Quartile3 { get; set; }
+        public static ScatterSeries[] Quartile4 { get; set; }
 
         private void DrawScatterChart()
         {
@@ -191,7 +191,7 @@ namespace We5ForcesModel
                 }
             });
             #endregion
-
+            
             // cartesianChart1.LegendLocation = LegendLocation.Bottom;
             SetAxisLimits();
         //    cartesianChart1.DataTooltip = new Wpf.CartesianChart.CustomTooltipAndLegend.CustomersTooltip();
@@ -460,6 +460,12 @@ namespace We5ForcesModel
         private void metroToolTip1_Popup(object sender, PopupEventArgs e)
         {
 
+        }
+
+        private void cartesianChart1_DataClick(object arg1, ChartPoint arg2)
+        {
+            BigScatterChart FrmBSC = new BigScatterChart();
+            FrmBSC.Show();
         }
     }
 }

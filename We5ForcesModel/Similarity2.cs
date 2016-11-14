@@ -12,9 +12,9 @@ using LiveCharts.Wpf; //The WPF controls
 
 namespace We5ForcesModel
 {
-    public partial class Substitute3 : Form
+    public partial class Similarity2 : Form
     {
-        public Substitute3()
+        public Similarity2()
         {
             InitializeComponent();
         }
@@ -23,14 +23,14 @@ namespace We5ForcesModel
             myChart.Series = new SeriesCollection
             {
                 new ColumnSeries { Title = "",
-                    Values = new ChartValues<double>(Substitute1.Prices),
+                    Values = new ChartValues<double>(Similarity1.Prices),
                     DataLabels = true,
                     LabelPoint = point => point.Y + "M"}
             };
             myChart.AxisX.Add(new Axis
             {
                 Title = "Model",
-                Labels = Substitute1.SubstitutionData,
+                Labels = Similarity1.SimilarData,
             });
             myChart.AxisY.Add(new Axis
             {
@@ -67,24 +67,24 @@ namespace We5ForcesModel
             }
             // 단가
             metroGrid2.Columns.Add("", "");
-            metroGrid2.Rows[0].Cells[1].Value = Substitute1.Spec[mainFrm.CurrentWeapon][Substitute1.Spec[mainFrm.CurrentWeapon].Count() - 1];
+            metroGrid2.Rows[0].Cells[1].Value = Similarity1.Spec[mainFrm.CurrentWeapon][Similarity1.Spec[mainFrm.CurrentWeapon].Count() - 1];
             metroGrid2.Rows[0].Cells[1].Style.BackColor = Color.FromArgb(255, 192, 0);
             metroGrid2.Rows[0].Cells[1].Style.ForeColor = Color.Black;
             metroGrid2.Rows[0].DefaultCellStyle.Font = new Font("나눔고딕", 9, FontStyle.Bold);
 
             // 경쟁무기 개수만큼 열을 추가
             // ★2번째 페이지 대비 어떤 항목을 우세, 열세를 할지
-            for (int i = 1; i < Substitute1.Spec[mainFrm.CurrentWeapon].Count() - 5; i++)
+            for (int i = 1; i < Similarity1.Spec[mainFrm.CurrentWeapon].Count() - 5; i++)
             {
                 metroGrid2.Columns.Add("", "");
-                metroGrid2.Rows[0].Cells[i + 1].Value = Substitute1.Spec[mainFrm.CurrentWeapon][i];
+                metroGrid2.Rows[0].Cells[i + 1].Value = Similarity1.Spec[mainFrm.CurrentWeapon][i];
                 metroGrid2.Rows[0].Cells[i + 1].Style.BackColor = Color.FromArgb(32, 56, 100);
                 metroGrid2.Rows[0].Cells[i + 1].Style.ForeColor = Color.White;
                 metroGrid2.Rows[0].DefaultCellStyle.Font = new Font("나눔고딕", 9, FontStyle.Bold);
             }
-            for (int i = 0; i < Substitute1.SubstitutionData.Length; i++)
+            for (int i = 0; i < Similarity1.SimilarData.Length; i++)
             {
-                metroGrid2.Rows.Add(Substitute1.SubstitutionData[i]);
+                metroGrid2.Rows.Add(Similarity1.SimilarData[i]);
                 metroGrid2.Rows[i + 1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 metroGrid2.Rows[i + 1].Cells[0].Style.BackColor = Color.FromArgb(222, 235, 247);
             }
@@ -124,7 +124,7 @@ namespace We5ForcesModel
             metroGrid2.CurrentCell = null;
         }
 
-        private void Substitute3_Load(object sender, EventArgs e)
+        private void Similarity2_Load(object sender, EventArgs e)
         {
             DrawCharts();
             dtgCompetition();
@@ -135,7 +135,7 @@ namespace We5ForcesModel
         {
             for (int i = 1; i < metroGrid2.RowCount; i++)
             {
-                metroGrid2.Rows[i].Cells[1].Value = Substitute1.Prices[i - 1];
+                metroGrid2.Rows[i].Cells[1].Value = Similarity1.Prices[i - 1];
             }
         }
     }
