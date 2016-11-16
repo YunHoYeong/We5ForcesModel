@@ -72,22 +72,28 @@ namespace We5ForcesModel
             {
                 bunifuFlatButton1.Enabled = true;
             }
-            if(yValues[0] <= 2 || yValues[4] >= 4)
+            else if(yValues[0] <= 2 || yValues[4] >= 4)
             {
                 bunifuFlatButton4.Enabled = true;
             }
-            if (Convert.ToDouble(ChartData[0]) <= 70 && Convert.ToDouble(ChartData[1]) <= 70 && yValues[1] <= 4)
+            else if (Convert.ToDouble(ChartData[0]) <= 70 && Convert.ToDouble(ChartData[1]) <= 70 && yValues[1] <= 4)
             {
                 bunifuFlatButton3.Enabled = true;
             }
-            if (Convert.ToDouble(ChartData[1]) >= 70  && yValues[0] >= 4)
-            {
-                bunifuFlatButton2.Enabled = true;
-            }
-            if(Convert.ToDouble(ChartData[1]) <= 70 && yValues[3] >= 4 && 20 <= Math.Abs(Convert.ToDouble(ChartData[1]) - Convert.ToDouble(ChartData[0])))
+            else if(Convert.ToDouble(ChartData[1]) <= 70 && yValues[3] >= 4 && 20 <= Math.Abs(Convert.ToDouble(ChartData[1]) - Convert.ToDouble(ChartData[0])))
             {
                 bunifuFlatButton5.Enabled = true;
             }
+            else if (Convert.ToDouble(ChartData[1]) >= 70 && yValues[0] >= 4)
+            {
+                bunifuFlatButton2.Enabled = true;
+            }
+            // 5개가 모두 false이면 핵심기술로 개발
+            if (bunifuFlatButton1.Enabled == false &&
+                bunifuFlatButton2.Enabled == false &&
+                bunifuFlatButton3.Enabled == false &&
+                bunifuFlatButton4.Enabled == false &&
+                bunifuFlatButton5.Enabled == false) { bunifuFlatButton1.Enabled = true; }
 
         }
         private void drawRadarChart2(string Title, string[] ChartData)
@@ -145,22 +151,29 @@ namespace We5ForcesModel
             {
                 bunifuFlatButton6.Enabled = true;
             }
-            if (yValues[0] <= 2 || yValues[4] >= 4)
+            else if (yValues[0] <= 2 || yValues[4] >= 4)
             {
                 bunifuFlatButton9.Enabled = true;
             }
-            if (Convert.ToDouble(ChartData[0]) <= 70 && Convert.ToDouble(ChartData[1]) <= 70 && yValues[1] <= 4)
+            else if (Convert.ToDouble(ChartData[0]) <= 70 && Convert.ToDouble(ChartData[1]) <= 70 && yValues[1] <= 4)
             {
                 bunifuFlatButton8.Enabled = true;
             }
-            if (Convert.ToDouble(ChartData[1]) >= 70 && yValues[0] >= 4)
-            {
-                bunifuFlatButton7.Enabled = true;
-            }
-            if (Convert.ToDouble(ChartData[1]) <= 70 && yValues[3] >= 4 && 20 <= Math.Abs(Convert.ToDouble(ChartData[1]) - Convert.ToDouble(ChartData[0])))
+            else if (Convert.ToDouble(ChartData[1]) <= 70 && yValues[3] >= 4 && 20 <= Math.Abs(Convert.ToDouble(ChartData[1]) - Convert.ToDouble(ChartData[0])))
             {
                 bunifuFlatButton10.Enabled = true;
             }
+            else if (Convert.ToDouble(ChartData[1]) >= 70 && yValues[0] >= 4)
+            {
+                bunifuFlatButton7.Enabled = true;
+            }
+            
+            // 5개가 모두 false이면 핵심기술로 개발
+            if (bunifuFlatButton6.Enabled == false &&
+                bunifuFlatButton7.Enabled == false &&
+                bunifuFlatButton8.Enabled == false &&
+                bunifuFlatButton9.Enabled == false &&
+                bunifuFlatButton10.Enabled == false) { bunifuFlatButton6.Enabled = true; }
         }
         private void drawRadarChart3(string Title, string[] ChartData)
         {
@@ -217,22 +230,29 @@ namespace We5ForcesModel
             {
                 bunifuFlatButton11.Enabled = true;
             }
-            if (yValues[0] <= 2 || yValues[4] >= 4)
+           else if (yValues[0] <= 2 || yValues[4] >= 4)
             {
                 bunifuFlatButton14.Enabled = true;
             }
-            if (Convert.ToDouble(ChartData[0]) <= 70 && Convert.ToDouble(ChartData[1]) <= 70 && yValues[1] <= 4)
+            else if (Convert.ToDouble(ChartData[0]) <= 70 && Convert.ToDouble(ChartData[1]) <= 70 && yValues[1] <= 4)
             {
                 bunifuFlatButton13.Enabled = true;
             }
-            if (Convert.ToDouble(ChartData[1]) >= 70 && yValues[0] >= 4)
-            {
-                bunifuFlatButton12.Enabled = true;
-            }
-            if (Convert.ToDouble(ChartData[1]) <= 70 && yValues[3] >= 4 && 20 <= Math.Abs(Convert.ToDouble(ChartData[1]) - Convert.ToDouble(ChartData[0])))
+            else if (Convert.ToDouble(ChartData[1]) <= 70 && yValues[3] >= 4 && 20 <= Math.Abs(Convert.ToDouble(ChartData[1]) - Convert.ToDouble(ChartData[0])))
             {
                 bunifuFlatButton15.Enabled = true;
             }
+            else if (Convert.ToDouble(ChartData[1]) >= 70 && yValues[0] >= 4)
+            {
+                bunifuFlatButton12.Enabled = true;
+            }
+
+            // 5개가 모두 false이면 핵심기술로 개발
+            if (bunifuFlatButton11.Enabled == false &&
+                bunifuFlatButton12.Enabled == false &&
+                bunifuFlatButton13.Enabled == false &&
+                bunifuFlatButton14.Enabled == false &&
+                bunifuFlatButton15.Enabled == false) { bunifuFlatButton11.Enabled = true; }
         }
         private void drawRadarChart4(string Title, string[] ChartData)
         {
@@ -291,22 +311,29 @@ namespace We5ForcesModel
             {
                 bunifuFlatButton16.Enabled = true;
             }
-            if (yValues[0] <= 2 || yValues[4] >= 4)
+            else if (yValues[0] <= 2 || yValues[4] >= 4)
             {
                 bunifuFlatButton19.Enabled = true;
             }
-            if (Convert.ToDouble(ChartData[0]) <= 70 && Convert.ToDouble(ChartData[1]) <= 70 && yValues[1] <= 4)
+            else if (Convert.ToDouble(ChartData[0]) <= 70 && Convert.ToDouble(ChartData[1]) <= 70 && yValues[1] <= 4)
             {
                 bunifuFlatButton18.Enabled = true;
             }
-            if (Convert.ToDouble(ChartData[1]) >= 70 && yValues[0] >= 4)
-            {
-                bunifuFlatButton17.Enabled = true;
-            }
-            if (Convert.ToDouble(ChartData[1]) <= 70 && yValues[3] >= 4 && 20 <= Math.Abs(Convert.ToDouble(ChartData[1]) - Convert.ToDouble(ChartData[0])))
+            else if (Convert.ToDouble(ChartData[1]) <= 70 && yValues[3] >= 4 && 20 <= Math.Abs(Convert.ToDouble(ChartData[1]) - Convert.ToDouble(ChartData[0])))
             {
                 bunifuFlatButton20.Enabled = true;
             }
+            else if (Convert.ToDouble(ChartData[1]) >= 70 && yValues[0] >= 4)
+            {
+                bunifuFlatButton17.Enabled = true;
+            }
+         
+            // 5개가 모두 false이면 핵심기술로 개발
+            if (bunifuFlatButton16.Enabled == false &&
+                bunifuFlatButton17.Enabled == false &&
+                bunifuFlatButton18.Enabled == false &&
+                bunifuFlatButton19.Enabled == false &&
+                bunifuFlatButton20.Enabled == false) { bunifuFlatButton16.Enabled = true; }
         }
         
         private void OriginalTechnology3_Load(object sender, EventArgs e)

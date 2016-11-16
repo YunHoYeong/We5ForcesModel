@@ -66,10 +66,27 @@ namespace We5ForcesModel
             return tmp.ToArray();
         }
 
+        private void CellValueBold()
+        {
+            /*
+            List<int> DoubleDataIndex = new List<int>();
+
+            for(int i = 1; i < metroGrid2.RowCount; i++)
+            {
+                string[] RowData = new string[metroGrid2.RowCount - 1];
+                bool isAllRowDataDouble = true;
+                for(int j = 1; j < metroGrid2.ColumnCount; j++)
+                {
+                    RowData[j - 1] = metroGrid2.Rows[i].Cells[j].Value != null ? metroGrid2.Rows[i].Cells[j].Value.ToString() : string.Empty;
+                }
+            }
+            */
+        }
 
         private void dtgCompetition()
         {
             int X = metroGrid1.ColumnHeadersHeight + metroGrid1.Rows.Cast<DataGridViewRow>().Sum(r => r.Height);
+            metroGrid1.Height = X;
             textBox1.Location = new Point(metroGrid1.Location.X, X + metroGrid1.Location.Y + 15);
             textBox1.Size = metroGrid2.Size;
             metroGrid2.Location = new Point(textBox1.Location.X, textBox1.Location.Y + textBox1.Size.Height + 1);
@@ -87,11 +104,14 @@ namespace We5ForcesModel
                 metroGrid2.Rows[i].Cells[0].Style.BackColor = Color.FromArgb(91, 155, 213);
                 metroGrid2.Rows[i].Cells[0].Style.ForeColor = Color.White;
             }
-            for (int i = 0; i < Spec[mainFrm.CurrentWeapon].Count(); i++)
+            for (int i = 0; i < mainFrm.selectCompetitionAndSimilarity.Length; i++)
             {
-                metroGrid2.Rows.Add(Spec[mainFrm.CurrentWeapon][i]);
-                metroGrid2.Rows[i + 1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                metroGrid2.Rows[i + 1].Cells[0].Style.BackColor = Color.FromArgb(222, 235, 247);
+                if (mainFrm.selectCompetitionAndSimilarity[i] == true)
+                {
+                    metroGrid2.Rows.Add(mainFrm.CompetitionData[0, i]);
+                    metroGrid2.Rows[metroGrid2.RowCount - 1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    metroGrid2.Rows[metroGrid2.RowCount - 1].Cells[0].Style.BackColor = Color.FromArgb(222, 235, 247);
+                }
             }
             #region 경쟁무기체계 DB에서 추가함
 
@@ -99,17 +119,7 @@ namespace We5ForcesModel
             // 경쟁무기에 뭐가 있는지 추출해옴
             CompetitionWeapon = (string[])mainFrm.CompetitionWeapon.ToArray();
 
-            /*
-        CompetitionWeapon = new string[mainFrm.CompetitionData.GetLength(0)];
-        for (int i = 1; i < mainFrm.CompetitionData.GetLength(0); i++)
-        {
-            CompetitionWeapon[i - 1] = mainFrm.CompetitionData[i, 3].ToString();
-        }
-        // 중복을 제거하고 난 뒤, Null 값도 제거하고
-        CompetitionWeapon = GetDistinctValues<string>(CompetitionWeapon);
-        CompetitionWeapon = CompetitionWeapon.Where(condition => condition != null).ToArray();
 
-*/
             // 경쟁무기 개수만큼 열을 추가
             for (int i = 0; i < CompetitionWeapon.Length; i++)
             {
@@ -120,19 +130,18 @@ namespace We5ForcesModel
                 
                 // M151을 기준으로 데이터들을 탐색함
                 var IndexOf2DArray = ExtensionMethods.CoordinatesOf(mainFrm.CompetitionData, CompetitionWeapon[i]);
-
-                // ★나중에 for문하나로 바꿔야함. 범용성
+                
+                int count = 1;
                 metroGrid2.Rows[0].Cells[i + 1].Value = CompetitionWeapon[i]; // 무기명
-                metroGrid2.Rows[1].Cells[i + 1].Value = mainFrm.CompetitionData[IndexOf2DArray.Item1, 6];   // 개발국가
-                metroGrid2.Rows[2].Cells[i + 1].Value = mainFrm.CompetitionData[IndexOf2DArray.Item1, 5];   // 제작사
-                metroGrid2.Rows[8].Cells[i + 1].Value = mainFrm.CompetitionData[IndexOf2DArray.Item1, 17];   // 선회
-                metroGrid2.Rows[9].Cells[i + 1].Value = mainFrm.CompetitionData[IndexOf2DArray.Item1, 18];   // 고저
-                metroGrid2.Rows[10].Cells[i + 1].Value = mainFrm.CompetitionData[IndexOf2DArray.Item1, 26];   // 구동속도
-                metroGrid2.Rows[11].Cells[i + 1].Value = mainFrm.CompetitionData[IndexOf2DArray.Item1, 39];   // 안정화 정확도
-                metroGrid2.Rows[12].Cells[i + 1].Value = mainFrm.CompetitionData[IndexOf2DArray.Item1, 38];   // 조준정확도
-                metroGrid2.Rows[13].Cells[i + 1].Value = mainFrm.CompetitionData[IndexOf2DArray.Item1, 7];   // 단가
-
-                for(int j = 1; j < metroGrid2.RowCount; j++)
+                for (int j = 0; j < mainFrm.selectCompetitionAndSimilarity.Length; j++)
+                {
+                    if (mainFrm.selectCompetitionAndSimilarity[j] == true)
+                    {
+                        metroGrid2.Rows[count].Cells[i + 1].Value = mainFrm.CompetitionData[IndexOf2DArray.Item1, j];
+                        count++;
+                    }
+                }
+                for (int j = 1; j < metroGrid2.RowCount; j++)
                 {
                     metroGrid2.Rows[j].Cells[i + 1].Style.BackColor = Color.White;
                 }
@@ -159,6 +168,27 @@ namespace We5ForcesModel
             {
                 metroGrid2.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
+
+
+            textBox2.Size = metroGrid2.Rows[0].Cells[metroGrid2.ColumnCount - 1].Size;
+            textBox1.Size = new Size(metroGrid2.Size.Width - textBox2.Size.Width , metroGrid2.Size.Height);
+            textBox2.Location = new Point(textBox1.Location.X + textBox1.Size.Width - 1, textBox1.Location.Y);
+
+            // 단가는 Table의 가장 아래로 들어감
+            int PriceIndex = -1;
+            for(int i = 0; i < metroGrid2.RowCount; i++)
+            {
+                if (metroGrid2.Rows[i].Cells[0].Value.ToString().IndexOf("Prices") != -1 ||
+                    metroGrid2.Rows[i].Cells[0].Value.ToString().IndexOf("단가") != -1 ||
+                    metroGrid2.Rows[i].Cells[0].Value.ToString().IndexOf("가격") != -1) { PriceIndex = i; break; }
+            }
+            if(PriceIndex != -1) // 단가 수정했으면, Domestic 다시 넣자.
+            {
+                int _iCurrentRow = PriceIndex;
+                DataGridViewRow _dgvRow = metroGrid2.Rows[_iCurrentRow];
+                metroGrid2.Rows.RemoveAt(_iCurrentRow);
+                metroGrid2.Rows.Insert(metroGrid2.RowCount, _dgvRow);
+            }
             for (int i = 1; i < metroGrid2.RowCount; i++)
             {
                 if (mainFrm.DomesticSpec[i - 1] != null)
@@ -166,11 +196,23 @@ namespace We5ForcesModel
                     metroGrid2.Rows[i].Cells[metroGrid2.ColumnCount - 1].Value = mainFrm.DomesticSpec[i - 1];
                 }
             }
-            metroGrid2.Rows[1].Cells[metroGrid2.ColumnCount - 1].Value = "대한민국";
-
-            textBox2.Size = metroGrid2.Rows[0].Cells[metroGrid2.ColumnCount - 1].Size;
-            textBox1.Size = new Size(metroGrid2.Size.Width - textBox2.Size.Width , metroGrid2.Size.Height);
-            textBox2.Location = new Point(textBox1.Location.X + textBox1.Size.Width - 1, textBox1.Location.Y);
+            // metroGrid2.Rows[1].Cells[metroGrid2.ColumnCount - 1].Value = "대한민국";
+            /*
+            // 행 변경에 따른 fitting(국내 단가)
+            for (int i = 1; i < metroGrid2.RowCount; i++)
+            {
+                if(metroGrid2.Rows[i].Cells[metroGrid2.ColumnCount - 1].Value != null)
+                {
+                    mainFrm.DomesticSpec[i - 1] = metroGrid2.Rows[i].Cells[metroGrid2.ColumnCount - 1].Value.ToString();
+                }
+            }
+            for(int i = 0; i < mainFrm.DomesticSpec.Length; i++)
+            {
+                if(mainFrm.DomesticSpec[i] != null)
+                {
+                    metroGrid2.Rows[i + 1].Cells[metroGrid2.ColumnCount - 1].Value = mainFrm.DomesticSpec[i];
+                }
+            }*/
 
             metroGrid2.CurrentCell = null;
             
@@ -180,20 +222,13 @@ namespace We5ForcesModel
         private void Conclusion()
         {
             int X = metroGrid2.ColumnHeadersHeight + metroGrid2.Rows.Cast<DataGridViewRow>().Sum(r => r.Height);
+            metroGrid2.Height = X;
             LblConclusion.Location = new Point(metroGrid2.Location.X, X + metroGrid2.Location.Y + 30);
             ConclusionBox.Location = new Point(LblConclusion.Location.X, LblConclusion.Location.Y + 30);
         }
         private void InitializeSpec()
         {
-            Spec[0] = new string[] { "개발국가", "제작사", "탑재중량", "운용고도", "운용반경", "체공시간", "최대속도", "단가 ($M)" };
-            Spec[1] = new string[] { "개발국가", "제작사", "길이", "중량", "페이로드", "최대속력", "항속거리", "지속시간", "단가 ($M)" };
-            Spec[2] = new string[] { "개발국가", "제작사", "장착가능화기", "원격 및 수동사격", "표적정보\n디지털전시", "화기별 자동장전", "포탑구동\n안정화장치보유", "선회", "고저", "구동속도", "안정화 정확도", "조준 정확도", "단가 ($M)" };
-            Spec[3] = new string[] { "개발국가", "제작사", "레이저 발진 파워", "유효사격 거리", "단가 ($M)" };
-            Spec[4] = new string[] { "개발국가", "제작사", "중량", "직경", "길이", "속력", "항주거리", "운용수심", "추진방식", "유도방식", "호밍방식", "단가 ($M)" };
-            Spec[5] = new string[] { "개발국가", "만재톤수", "건조년도(년)", "최대속력(Kts)", "항속거리(NM)", "진/회수방식", "단가 ($M)" };
-
-            if(mainFrm.DomesticSpec == null) { mainFrm.DomesticSpec = new string[Spec[mainFrm.CurrentWeapon].Count()]; }
-            
+            if(mainFrm.DomesticSpec == null) { mainFrm.DomesticSpec = new string[mainFrm.selectCompetitionAndSimilarity.Where(c => c).Count()]; }
         }
         private void SeperateCompetitionAndSimiliarity()
         {
@@ -214,15 +249,30 @@ namespace We5ForcesModel
                 selectCompetition frmSelectedCompetition = new selectCompetition();
                 frmSelectedCompetition.ShowDialog();
             }
-
-
+            // 최초에 대체무기체계의 메뉴를 선정함
+            if (mainFrm.CompetitionData != null && mainFrm.CompetitionData.Length != 0)
+            {
+                if (mainFrm.selectCompetitionAndSimilarity.Where(c => c).Count() < 5)
+                {
+                    SelectCompetitionAndSimilarMenu frmSelectSubstitutionMenu = new SelectCompetitionAndSimilarMenu();
+                    frmSelectSubstitutionMenu.ShowDialog();
+                }
+            }
         }
         private void Competition2_Load(object sender, EventArgs e)
         {
             // 1. 경쟁무기체계(중복제거)를 모두 불러옴
             SeperateCompetitionAndSimiliarity();
-
             metroGrid2.AutoGenerateColumns = false;
+
+            bunifuCustomLabel1.Visible = true;
+            textBox1.Visible = true;
+            metroGrid1.Visible = true;
+            metroGrid2.Visible = true;
+            textBox2.Visible = true;
+            LblConclusion.Visible = true;
+            ConclusionBox.Visible = true;
+
             InitializeSpec();
             StandardCompetition();
             dtgCompetition();
@@ -232,10 +282,29 @@ namespace We5ForcesModel
         }
         private void saveData()
         {
-            Prices = new double[CompetitionWeapon.Length];
-            for (int i = 0; i < Prices.Length; i++)
+            int PricesIndex = -1;
+            for (int i = 0; i < metroGrid2.RowCount; i++)
             {
-                Prices[i] = Convert.ToDouble(metroGrid2.Rows[metroGrid2.RowCount - 1].Cells[i + 1].Value);
+                if (metroGrid2.Rows[i].Cells[0].Value.ToString().IndexOf("Prices") != -1 ||
+                    metroGrid2.Rows[i].Cells[0].Value.ToString().IndexOf("단가") != -1 ||
+                    metroGrid2.Rows[i].Cells[0].Value.ToString().IndexOf("가격") != -1)
+                {
+                    PricesIndex = i;
+                }
+            }
+            if (PricesIndex != -1)
+            {
+                Prices = new double[CompetitionWeapon.Length];
+                for (int i = 0; i < Prices.Length; i++)
+                {
+                    Prices[i] = Convert.ToDouble(metroGrid2.Rows[PricesIndex].Cells[i + 1].Value);
+                }
+            }
+            // row 값을 저장함
+            mainFrm.SelectedCompetitionMenu = new string[metroGrid2.RowCount - 1]; // 단가는 제외함
+            for (int i = 1; i < metroGrid2.RowCount - 1; i++)
+            {
+                mainFrm.SelectedCompetitionMenu[i - 1] = metroGrid2.Rows[i].Cells[0].Value.ToString();
             }
         }
 
@@ -255,7 +324,27 @@ namespace We5ForcesModel
         {
             if(e.ColumnIndex == Competition2.cntCompetitionWeapon + 1 && e.RowIndex > 0)
             {
-                mainFrm.DomesticSpec[e.RowIndex - 1] = metroGrid2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                if(metroGrid2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+                {
+                    mainFrm.DomesticSpec[e.RowIndex - 1] = metroGrid2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                }
+            }
+        }
+
+        private void metroGrid2_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if(metroGrid2.CurrentCell.ColumnIndex == metroGrid2.ColumnCount - 1 &&
+                metroGrid2.CurrentCell.RowIndex == metroGrid2.RowCount - 1)
+            {
+                e.Control.KeyPress += new KeyPressEventHandler(metroGrid2_KeyPress);
+            }
+        }
+
+        private void metroGrid2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
             }
         }
     }

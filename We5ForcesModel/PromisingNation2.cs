@@ -18,7 +18,7 @@ namespace We5ForcesModel
         }
         private void dtgAsia()
         {
-
+            metroGrid1.SuspendLayout();
             metroGrid1.Location = new Point(lbl1.Location.X, lbl1.Location.Y + 20);
 
             metroGrid1.RowHeadersVisible = false;
@@ -104,11 +104,12 @@ namespace We5ForcesModel
                 {
                     for(int j = 0; j < metroGrid1.ColumnCount; j++)
                     {
-                        metroGrid1.Rows[i].Cells[j].Style.BackColor =  Color.FromArgb(255, 192, 0);
+                        metroGrid1.Rows[i].Cells[j].Style.BackColor =  Color.FromArgb(255, 242, 204);
                     }
                 }
             }
 
+            metroGrid1.ResumeLayout();
         }
         private void dtgMiddleEast()
         {
@@ -196,7 +197,7 @@ namespace We5ForcesModel
                 {
                     for (int j = 0; j < metroGrid2.ColumnCount; j++)
                     {
-                        metroGrid2.Rows[i].Cells[j].Style.BackColor = Color.FromArgb(255, 192, 0);
+                        metroGrid2.Rows[i].Cells[j].Style.BackColor = Color.FromArgb(255, 242, 204);
                     }
                 }
             }
@@ -286,7 +287,7 @@ namespace We5ForcesModel
                 {
                     for (int j = 0; j < metroGrid3.ColumnCount; j++)
                     {
-                        metroGrid3.Rows[i].Cells[j].Style.BackColor = Color.FromArgb(255, 192, 0);
+                        metroGrid3.Rows[i].Cells[j].Style.BackColor = Color.FromArgb(255, 242, 204);
                     }
                 }
             }

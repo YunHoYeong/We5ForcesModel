@@ -31,6 +31,7 @@ namespace We5ForcesModel
         public static List<string> SelectedNationName = new List<string>();
         public static List<int> indexOfMinusMinus = new List<int>();
 
+        public static double[] Weight1 = new double[] { 5.3, 11.9, 36.0, 46.8, 25, 25, 25, 25 };
         public string strCon;
         public string strSQL;
         public static object[,] NationDB;
@@ -374,8 +375,8 @@ namespace We5ForcesModel
             }
             // 0 ~ 3 까지가 공통식별요인 ==> Z변환점수
             // 4 ~ 7 까지가 무기체계식별요인 ==> Z변환점수
-            int[] SumzPoint1 = new int[NationPoint.GetLength(0)];
-            int[] SumzPoint2 = new int[NationPoint.GetLength(0)];
+            double[] SumzPoint1 = new double[NationPoint.GetLength(0)];
+            double[] SumzPoint2 = new double[NationPoint.GetLength(0)];
             zPoint1 = new double[NationPoint.GetLength(0)];
             zPoint2 = new double[NationPoint.GetLength(0)];
 
@@ -386,11 +387,11 @@ namespace We5ForcesModel
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    SumzPoint1[i] += NationPoint[i, j];
+                    SumzPoint1[i] += NationPoint[i, j] * Weight1[j];
                 }
                 for (int j = 4; j < 8; j++)
                 {
-                    SumzPoint2[i] += NationPoint[i, j];
+                    SumzPoint2[i] += NationPoint[i, j] * Weight1[j];
                 }
             }
             for (int i = 0; i < NationPoint.GetLength(0); i++)

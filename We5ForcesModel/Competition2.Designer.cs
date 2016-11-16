@@ -111,6 +111,7 @@
             this.bunifuCustomLabel1.Size = new System.Drawing.Size(220, 17);
             this.bunifuCustomLabel1.TabIndex = 4;
             this.bunifuCustomLabel1.Text = "◎ 경쟁무기체계 대비 기술 경쟁력";
+            this.bunifuCustomLabel1.Visible = false;
             // 
             // metroGrid2
             // 
@@ -167,8 +168,11 @@
             this.metroGrid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.metroGrid2.Size = new System.Drawing.Size(770, 414);
             this.metroGrid2.TabIndex = 6;
+            this.metroGrid2.Visible = false;
             this.metroGrid2.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellValueChanged);
+            this.metroGrid2.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.metroGrid2_EditingControlShowing);
             this.metroGrid2.SelectionChanged += new System.EventHandler(this.metroGrid2_SelectionChanged);
+            this.metroGrid2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.metroGrid2_KeyPress);
             // 
             // LblConclusion
             // 
@@ -179,6 +183,7 @@
             this.LblConclusion.Size = new System.Drawing.Size(68, 17);
             this.LblConclusion.TabIndex = 7;
             this.LblConclusion.Text = "기타 의견";
+            this.LblConclusion.Visible = false;
             // 
             // ConclusionBox
             // 
@@ -190,6 +195,7 @@
             this.ConclusionBox.Name = "ConclusionBox";
             this.ConclusionBox.Size = new System.Drawing.Size(770, 72);
             this.ConclusionBox.TabIndex = 8;
+            this.ConclusionBox.Visible = false;
             // 
             // textBox1
             // 
@@ -204,6 +210,7 @@
             this.textBox1.TabIndex = 9;
             this.textBox1.Text = "경쟁무기체계 주요 요구성능";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox1.Visible = false;
             // 
             // textBox2
             // 
@@ -218,6 +225,7 @@
             this.textBox2.TabIndex = 10;
             this.textBox2.Text = "필요 제원";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox2.Visible = false;
             // 
             // Competition2
             // 

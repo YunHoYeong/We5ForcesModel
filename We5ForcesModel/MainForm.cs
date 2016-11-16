@@ -11,10 +11,6 @@ namespace We5ForcesModel
 {
     public partial class mainFrm : Form
     {
-        OleDbConnection ExcelConn;
-        public string strCon;
-        public string strSQL;
-
         public static int CurrentMenu = 0;
         public static int CurrentPage = 0;
         public static int CurrentWeapon = 2;
@@ -22,6 +18,12 @@ namespace We5ForcesModel
         public static int[] MaximumPages = new int[] { 3, 3, 3, 3, 3, 1, 1 };
 
         public static string[] DomesticSpec;
+
+        // 가성비를 구하기 위한 항목을 기술경쟁력 표에서 가져옴
+        public static string[] SelectedCompetitionMenu;
+        public static string[] SelectedSimilarityMenu;
+        public static string[] SelectedSubstitutionMenu;
+
 
         public mainFrm()
         {
@@ -32,6 +34,9 @@ namespace We5ForcesModel
         public static object[,] CompetitionData;
         public static object[,] Similar;
         public static object[,] Substitution;
+
+        public static bool[] selectSubstitution;
+        public static bool[] selectCompetitionAndSimilarity;
 
         public static List<string> CompetitionWeapon;
         public static List<string> SimilarityWeapon;
@@ -75,8 +80,7 @@ namespace We5ForcesModel
 
             string ExcelPath = "DB\\3.RCWS.xlsx";
             ExcelPath = System.IO.Path.GetFullPath(ExcelPath);
-
-
+            
             if (File.Exists(ExcelPath))
             {
                 string sheetName = "Competition";
@@ -92,6 +96,7 @@ namespace We5ForcesModel
                     ColumnCount = data.ColumnNames.Count();
                 }
                 CompetitionData = new object[RowCount + 1, ColumnCount];
+                selectCompetitionAndSimilarity = new bool[ColumnCount];
 
                 foreach (var data in ExcelData)
                 {
@@ -123,6 +128,7 @@ namespace We5ForcesModel
                     ColumnCount = data.ColumnNames.Count();
                 }
                 Substitution = new object[RowCount + 1, ColumnCount];
+                selectSubstitution = new bool[ColumnCount];
 
                 foreach (var data in ExcelData)
                 {
@@ -204,6 +210,17 @@ namespace We5ForcesModel
         private void Show_Substitute1_Form_In_Panel()
         {
             panel3.Controls.Clear();
+            Cursor = Cursors.WaitCursor;
+            // 최초에 대체무기체계의 메뉴를 선정함
+            if (mainFrm.Substitution != null && mainFrm.Substitution.Length != 0)
+            {
+                if (mainFrm.selectSubstitution.Where(c => c).Count() < 5)
+                {
+                    SelectSubstitutionMenu frmSelectSubstitutionMenu = new SelectSubstitutionMenu();
+                    frmSelectSubstitutionMenu.ShowDialog();
+                }
+            }
+            Cursor = Cursors.Arrow;
             Substitute1 SubForm = new Substitute1();
             SubForm.TopLevel = false;
             SubForm.Dock = System.Windows.Forms.DockStyle.Fill;
