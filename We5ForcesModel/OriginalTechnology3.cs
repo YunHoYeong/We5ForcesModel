@@ -340,34 +340,106 @@ namespace We5ForcesModel
         {
             List<string> stringChartData = new List<string>();
             List<string> Title = new List<string>();
-            for (int i = 0; i < OriginalTechnology1.MainTechnology[mainFrm.CurrentWeapon].Length; i++)
-            {
-                if (OriginalTechnology1.MainTechnology[mainFrm.CurrentWeapon][i] == true)
-                {
-                    for (int j = 0; j < OriginalTechnology1.SubTechnology[mainFrm.CurrentWeapon][i].Length; j++)
-                    {
-                        for (int k = 0; k < OriginalTechnology1.TechnologyLevel[mainFrm.CurrentWeapon][i][j].Length; k++)
-                        {
-                            stringChartData.Add(OriginalTechnology1.TechnologyLevel[mainFrm.CurrentWeapon][i][j][k]);
-                        }
-                        Title.Add(OriginalTechnology1.SubTechnology[mainFrm.CurrentWeapon][i][j]);
-                    }
 
-                }
+
+            Title.AddRange(mainFrm.CriticalTechnology1);
+
+            if (mainFrm.CriticalTechnology1.Count >= 1)
+            {
+                List<string> sublist1 = new List<string>();
+                string[] SubList = new string[] {   mainFrm.CriticalTechnology1[0] ,
+                                                    mainFrm.CriticalTechnology2[0],
+                                                    mainFrm.CriticalTechnology3[0],
+                                                    mainFrm.CriticalTechnology4[0],
+                                                    mainFrm.CriticalTechnology5[0],
+                                                    mainFrm.CriticalTechnology6[0],
+                                                    mainFrm.CriticalTechnology7[0],
+                                                    mainFrm.CriticalTechnology8[0],
+                                                    mainFrm.CriticalTechnology9[0]};
+                sublist1.AddRange(SubList);
+                drawRadarChart1("<" + Title[0] + ">", sublist1.ToArray());
+
+                chart1.Visible = true;
+                Title1.Visible = true;
+                bunifuFlatButton1.Visible = true;
+                bunifuFlatButton2.Visible = true;
+                bunifuFlatButton3.Visible = true;
+                bunifuFlatButton4.Visible = true;
+                bunifuFlatButton5.Visible = true;
 
             }
+            if (mainFrm.CriticalTechnology1.Count >= 2)
+            {
+                List<string> sublist2 = new List<string>();
+                string[] SubList = new string[] {   mainFrm.CriticalTechnology1[1] ,
+                                                    mainFrm.CriticalTechnology2[1],
+                                                    mainFrm.CriticalTechnology3[1],
+                                                    mainFrm.CriticalTechnology4[1],
+                                                    mainFrm.CriticalTechnology5[1],
+                                                    mainFrm.CriticalTechnology6[1],
+                                                    mainFrm.CriticalTechnology7[1],
+                                                    mainFrm.CriticalTechnology8[1],
+                                                    mainFrm.CriticalTechnology9[1]};
+                sublist2.AddRange(SubList);
+                drawRadarChart2("<" + Title[1] + ">", sublist2.ToArray());
 
-            List<string> sublist1 = stringChartData.GetRange(0, 8);
-            List<string> sublist2 = stringChartData.GetRange(8, 8);
-            List<string> sublist3 = stringChartData.GetRange(16, 8);
-            List<string> sublist4 = stringChartData.GetRange(24, 8);
 
+                chart2.Visible = true;
+                Title2.Visible = true;
+                bunifuFlatButton6.Visible = true;
+                bunifuFlatButton7.Visible = true;
+                bunifuFlatButton8.Visible = true;
+                bunifuFlatButton9.Visible = true;
+                bunifuFlatButton10.Visible = true;
+            }
+            if (mainFrm.CriticalTechnology1.Count >= 3)
+            {
+                List<string> sublist3 = new List<string>();
+                string[] SubList = new string[] {   mainFrm.CriticalTechnology1[2] ,
+                                                    mainFrm.CriticalTechnology2[2],
+                                                    mainFrm.CriticalTechnology3[2],
+                                                    mainFrm.CriticalTechnology4[2],
+                                                    mainFrm.CriticalTechnology5[2],
+                                                    mainFrm.CriticalTechnology6[2],
+                                                    mainFrm.CriticalTechnology7[2],
+                                                    mainFrm.CriticalTechnology8[2],
+                                                    mainFrm.CriticalTechnology9[2]};
+                sublist3.AddRange(SubList);
+                drawRadarChart3("<" + Title[2] + ">", sublist3.ToArray());
 
+                chart3.Visible = true;
+                Title3.Visible = true;
+                bunifuFlatButton11.Visible = true;
+                bunifuFlatButton12.Visible = true;
+                bunifuFlatButton13.Visible = true;
+                bunifuFlatButton14.Visible = true;
+                bunifuFlatButton15.Visible = true;
+            }
+            if (mainFrm.CriticalTechnology1.Count >= 4)
+            {
+                List<string> sublist4 = new List<string>();
+                string[] SubList = new string[] {   mainFrm.CriticalTechnology1[3] ,
+                                                    mainFrm.CriticalTechnology2[3],
+                                                    mainFrm.CriticalTechnology3[3],
+                                                    mainFrm.CriticalTechnology4[3],
+                                                    mainFrm.CriticalTechnology5[3],
+                                                    mainFrm.CriticalTechnology6[3],
+                                                    mainFrm.CriticalTechnology7[3],
+                                                    mainFrm.CriticalTechnology8[3],
+                                                    mainFrm.CriticalTechnology9[3]};
+                sublist4.AddRange(SubList);
+                drawRadarChart4("<" + Title[3] + ">", sublist4.ToArray());
 
-            drawRadarChart1("<"+Title[0]+">", sublist1.ToArray());
-            drawRadarChart2("<"+Title[1] + ">", sublist2.ToArray());
-            drawRadarChart3("<"+Title[2] + ">", sublist3.ToArray());
-            drawRadarChart4("<"+Title[3] + ">", sublist4.ToArray());
+                chart4.Visible = true;
+                Title4.Visible = true;
+                bunifuFlatButton16.Visible = true;
+                bunifuFlatButton17.Visible = true;
+                bunifuFlatButton18.Visible = true;
+                bunifuFlatButton19.Visible = true;
+                bunifuFlatButton20.Visible = true;
+            }
+
+            
         }
     }
 }

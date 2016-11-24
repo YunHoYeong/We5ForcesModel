@@ -372,6 +372,9 @@
     <EmbeddedResource Include="SWOT.resx">
       <DependentUpon>SWOT.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="NanumGothic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -382,6 +385,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\NanumGothic.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

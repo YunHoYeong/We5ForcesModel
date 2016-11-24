@@ -157,6 +157,7 @@
             this.metroGrid2.TabIndex = 8;
             this.metroGrid2.Visible = false;
             this.metroGrid2.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellValueChanged);
+            this.metroGrid2.CurrentCellDirtyStateChanged += new System.EventHandler(this.metroGrid2_CurrentCellDirtyStateChanged);
             this.metroGrid2.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.metroGrid2_EditingControlShowing);
             this.metroGrid2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.metroGrid2_KeyPress);
             // 
@@ -186,6 +187,7 @@
             this.ConclusionBox.Size = new System.Drawing.Size(770, 72);
             this.ConclusionBox.TabIndex = 12;
             this.ConclusionBox.Visible = false;
+            this.ConclusionBox.TextChanged += new System.EventHandler(this.ConclusionBox_TextChanged);
             // 
             // LblConclusion
             // 
@@ -231,9 +233,9 @@
             this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(56)))), ((int)(((byte)(100)))));
             this.bunifuCustomLabel1.Location = new System.Drawing.Point(12, 21);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
-            this.bunifuCustomLabel1.Size = new System.Drawing.Size(216, 17);
+            this.bunifuCustomLabel1.Size = new System.Drawing.Size(354, 17);
             this.bunifuCustomLabel1.TabIndex = 6;
-            this.bunifuCustomLabel1.Text = "◎ 대체무기체계 대비 기술경쟁력";
+            this.bunifuCustomLabel1.Text = "◎ 대체무기체계 대비 국내 무기체계의 운용개념 차별성";
             this.bunifuCustomLabel1.Visible = false;
             // 
             // Substitute1

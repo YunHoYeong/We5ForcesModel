@@ -196,6 +196,7 @@
             this.ConclusionBox.Size = new System.Drawing.Size(770, 72);
             this.ConclusionBox.TabIndex = 8;
             this.ConclusionBox.Visible = false;
+            this.ConclusionBox.TextChanged += new System.EventHandler(this.ConclusionBox_TextChanged);
             // 
             // textBox1
             // 

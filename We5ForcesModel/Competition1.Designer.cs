@@ -98,7 +98,6 @@
             this.metroGrid1.Location = new System.Drawing.Point(12, 53);
             this.metroGrid1.MultiSelect = false;
             this.metroGrid1.Name = "metroGrid1";
-            this.metroGrid1.ReadOnly = true;
             this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;

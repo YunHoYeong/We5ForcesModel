@@ -81,6 +81,7 @@
             this.cartesianChart1.Size = new System.Drawing.Size(374, 200);
             this.cartesianChart1.TabIndex = 4;
             this.cartesianChart1.Text = "cartesianChart1";
+            this.cartesianChart1.Visible = false;
             // 
             // cartesianChart2
             // 
@@ -89,6 +90,7 @@
             this.cartesianChart2.Size = new System.Drawing.Size(375, 200);
             this.cartesianChart2.TabIndex = 5;
             this.cartesianChart2.Text = "cartesianChart2";
+            this.cartesianChart2.Visible = false;
             // 
             // cartesianChart3
             // 
@@ -97,6 +99,7 @@
             this.cartesianChart3.Size = new System.Drawing.Size(375, 200);
             this.cartesianChart3.TabIndex = 7;
             this.cartesianChart3.Text = "cartesianChart3";
+            this.cartesianChart3.Visible = false;
             // 
             // cartesianChart4
             // 
@@ -105,6 +108,7 @@
             this.cartesianChart4.Size = new System.Drawing.Size(374, 200);
             this.cartesianChart4.TabIndex = 6;
             this.cartesianChart4.Text = "cartesianChart4";
+            this.cartesianChart4.Visible = false;
             // 
             // Title4
             // 
@@ -117,6 +121,7 @@
             this.Title4.TabIndex = 19;
             this.Title4.Text = "◎ 원천기술별 확보방안";
             this.Title4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Title4.Visible = false;
             // 
             // Title3
             // 
@@ -129,6 +134,7 @@
             this.Title3.TabIndex = 18;
             this.Title3.Text = "◎ 원천기술별 확보방안";
             this.Title3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Title3.Visible = false;
             // 
             // Title2
             // 
@@ -141,6 +147,7 @@
             this.Title2.TabIndex = 17;
             this.Title2.Text = "◎ 원천기술별 확보방안";
             this.Title2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Title2.Visible = false;
             // 
             // Title1
             // 
@@ -153,6 +160,7 @@
             this.Title1.TabIndex = 16;
             this.Title1.Text = "◎ 원천기술별 확보방안";
             this.Title1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Title1.Visible = false;
             // 
             // metroGrid1
             // 
@@ -205,6 +213,7 @@
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.metroGrid1.Size = new System.Drawing.Size(369, 104);
             this.metroGrid1.TabIndex = 20;
+            this.metroGrid1.Visible = false;
             // 
             // metroGrid2
             // 
@@ -257,6 +266,7 @@
             this.metroGrid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.metroGrid2.Size = new System.Drawing.Size(375, 104);
             this.metroGrid2.TabIndex = 21;
+            this.metroGrid2.Visible = false;
             // 
             // metroGrid4
             // 
@@ -309,6 +319,7 @@
             this.metroGrid4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.metroGrid4.Size = new System.Drawing.Size(375, 104);
             this.metroGrid4.TabIndex = 23;
+            this.metroGrid4.Visible = false;
             // 
             // metroGrid3
             // 
@@ -361,6 +372,7 @@
             this.metroGrid3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.metroGrid3.Size = new System.Drawing.Size(374, 104);
             this.metroGrid3.TabIndex = 22;
+            this.metroGrid3.Visible = false;
             // 
             // OriginalTechnology2
             // 

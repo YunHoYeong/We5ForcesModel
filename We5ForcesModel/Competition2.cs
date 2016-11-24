@@ -19,7 +19,6 @@ namespace We5ForcesModel
         }
         public static string[][] Spec = new string[6][];
         
-        
         public static string[] RawWeaponDBData;
         public static double[] Prices;
 
@@ -245,17 +244,26 @@ namespace We5ForcesModel
                 RawWeaponDBData = RawWeaponDBData.Where(condition => condition != null).ToArray();
 
                 isSimilarWeapon = new bool[RawWeaponDBData.Length];
-                                
+
+                Cursor = Cursors.WaitCursor;
+
                 selectCompetition frmSelectedCompetition = new selectCompetition();
                 frmSelectedCompetition.ShowDialog();
+                
+                Cursor = Cursors.Arrow;
             }
             // 최초에 대체무기체계의 메뉴를 선정함
             if (mainFrm.CompetitionData != null && mainFrm.CompetitionData.Length != 0)
             {
                 if (mainFrm.selectCompetitionAndSimilarity.Where(c => c).Count() < 5)
                 {
+
+                    Cursor = Cursors.WaitCursor;
+
                     SelectCompetitionAndSimilarMenu frmSelectSubstitutionMenu = new SelectCompetitionAndSimilarMenu();
                     frmSelectSubstitutionMenu.ShowDialog();
+
+                    Cursor = Cursors.Arrow;
                 }
             }
         }
@@ -279,6 +287,8 @@ namespace We5ForcesModel
             Conclusion();
 
             saveData();
+
+            ConclusionBox.Text = mainFrm.ETC_Decision_1;
         }
         private void saveData()
         {
@@ -346,6 +356,11 @@ namespace We5ForcesModel
             {
                 e.Handled = true;
             }
+        }
+
+        private void ConclusionBox_TextChanged(object sender, EventArgs e)
+        {
+            mainFrm.ETC_Decision_1 = ConclusionBox.Text;
         }
     }
     public static class ExtensionMethods

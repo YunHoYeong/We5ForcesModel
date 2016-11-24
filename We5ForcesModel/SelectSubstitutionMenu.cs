@@ -150,5 +150,10 @@ namespace We5ForcesModel
                 
             }
         }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, this.tableLayoutPanel1.ClientRectangle, Color.DarkBlue, ButtonBorderStyle.Dotted);
+        }
     }
 }

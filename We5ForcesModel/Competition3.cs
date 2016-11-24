@@ -69,8 +69,10 @@ namespace We5ForcesModel
         }
         private void dtgCompetition()
         {
+            metroGrid2.EditMode = DataGridViewEditMode.EditOnEnter;
             //ComboBox 유형의 셀 만들고
             DataGridViewComboBoxColumn[] ComboBoxCell = new DataGridViewComboBoxColumn[mainFrm.selectCompetitionAndSimilarity.Where(c => c).Count() - 1];
+        
             //DisplayStyle을 ComboBox로 설정
             for(int i = 0; i < ComboBoxCell.Count(); i++)
             {
@@ -80,6 +82,7 @@ namespace We5ForcesModel
                 ComboBoxCell[i].Items.Add("유사");
                 ComboBoxCell[i].Items.Add("우세");
                 
+                ComboBoxCell[i].DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
                 ComboBoxCell[i].FlatStyle = FlatStyle.Flat;
             }
             textBox1.Size = metroGrid2.Size;
@@ -88,7 +91,6 @@ namespace We5ForcesModel
     
             metroGrid2.RowHeadersVisible = false;
             metroGrid2.ColumnHeadersVisible = true;
-            //   metroGrid2.ColumnCount = mainFrm.selectCompetitionAndSimilarity.Where(c => c).Count() + 1;
             metroGrid2.ColumnCount = 2;
 
             metroGrid2.Columns[0].Name = "기 종";
@@ -119,6 +121,7 @@ namespace We5ForcesModel
             for (int i = 0; i < 1; i++)
             {
                 metroGrid2.Rows[i].Cells[0].ReadOnly = true;
+                metroGrid2.Rows[i].Cells[1].ReadOnly = true;
             }
 
             
@@ -157,12 +160,10 @@ namespace We5ForcesModel
                     metroGrid2.Rows[j].Cells[i].Style.BackColor = Color.White;
                 }
             }
-
             #endregion
             // Design
             metroGrid2.DefaultCellStyle.BackColor = Color.White;
-
-
+            
             this.metroGrid2.DefaultCellStyle.Font = new Font("나눔고딕", 9);
             for(int i =  0; i < metroGrid2.RowCount; i++)
             {
@@ -170,6 +171,7 @@ namespace We5ForcesModel
             }
             metroGrid2.Columns[0].Width = 300;
             metroGrid2.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+
             for (int i = 1; i < metroGrid2.ColumnCount; i++)
             {
                 metroGrid2.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -179,15 +181,18 @@ namespace We5ForcesModel
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
                 column.DefaultCellStyle.Font = new Font("나눔고딕", 9);
             }
-            metroGrid2.CurrentCell = null;
-        }
-        private void Competition3_Load(object sender, EventArgs e)
-        {
-            DrawCharts();
-            dtgCompetition();
-            WriteDataGrid();
-            Conclusion();
-            // anotherForm.metroGrid2;
+
+            for (int i = 2; i < metroGrid2.ColumnCount; i++)
+            {
+                for (int j = 0; j < metroGrid2.RowCount; j++)
+                {
+                    int WeaponIndex = mainFrm.CompetitionWeapon.IndexOf(metroGrid2.Rows[j].Cells[0].Value.ToString());
+                    int SpecIndex = Array.IndexOf(mainFrm.FullSpecCompetitionAndSimilarity, metroGrid2.Columns[i].Name.ToString());
+
+                      metroGrid2.Rows[j].Cells[i].Value = mainFrm.CostEffectiveCompetitionAndSimilar[WeaponIndex, SpecIndex];
+                }
+            }
+      //      metroGrid2.CurrentCell = null;
         }
         private void WriteDataGrid()
         {
@@ -214,6 +219,14 @@ namespace We5ForcesModel
                 metroGrid2.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.ForeColor = Color.Black;
             }
 
+            if (e.RowIndex >= 0 && e.ColumnIndex > 1)
+            {
+                int WeaponIndex = mainFrm.CompetitionWeapon.IndexOf(metroGrid2.Rows[e.RowIndex].Cells[0].Value.ToString());
+                int SpecIndex = Array.IndexOf(mainFrm.FullSpecCompetitionAndSimilarity, metroGrid2.Columns[e.ColumnIndex].Name.ToString());
+
+                mainFrm.CostEffectiveCompetitionAndSimilar[WeaponIndex, SpecIndex] = metroGrid2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                metroGrid2.Invalidate();
+            }
         }
 
         private void myChart_DataClick(object arg1, ChartPoint arg2)
@@ -222,11 +235,23 @@ namespace We5ForcesModel
             FrmBigChartCompetition.Show();
         }
 
-        private void metroGrid2_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void Competition3_Load(object sender, EventArgs e)
         {
-           
+            DrawCharts();
+            dtgCompetition();
+            WriteDataGrid();
+            Conclusion();
+            ConclusionBox.Text = mainFrm.ETC_Decision_2;
 
         }
+        private void metroGrid2_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            metroGrid2.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
 
+        private void ConclusionBox_TextChanged(object sender, EventArgs e)
+        {
+            mainFrm.ETC_Decision_2 = ConclusionBox.Text;
+        }
     }
 }

@@ -702,6 +702,7 @@ namespace We5ForcesModel
                 }
             });
 
+            
             cartesianChart4.AxisY[0].MinValue = 0; // lets force the axis to be 100ms ahead
             cartesianChart4.AxisY[0].MaxValue = 100;
             cartesianChart4.Font = new System.Drawing.Font("나눔고딕", 9);
@@ -759,64 +760,80 @@ namespace We5ForcesModel
             this.metroGrid4.DefaultCellStyle.Font = new Font("나눔고딕", 9);
             this.metroGrid4.ColumnHeadersDefaultCellStyle.Font = new Font("나눔고딕", 9);
         }
-
-
+        
+        
         private void OriginalTechnology2_Load(object sender, EventArgs e)
         {
             Title = new List<string>();
-            for (int i = 0; i < OriginalTechnology1.MainTechnology[mainFrm.CurrentWeapon].Length; i++)
-            {
-                if (OriginalTechnology1.MainTechnology[mainFrm.CurrentWeapon][i] == true)
-                {
-                    for (int j = 0; j < OriginalTechnology1.SubTechnology[mainFrm.CurrentWeapon][i].Length; j++)
-                    {
-                        Title.Add(OriginalTechnology1.SubTechnology[mainFrm.CurrentWeapon][i][j]);
-                    }
 
-                }
-
-            }
+            Title.AddRange(mainFrm.CriticalTechnology1);
 
             ReadExcelData();
             
             string[] Domestic = new string[ScurveData.GetLength(0)];
             string[] International = new string[ScurveData.GetLength(0)];
-            for (int j = 0; j < ScurveData.GetLength(0); j++)
+
+            if (mainFrm.CriticalTechnology1.Count >= 1)
             {
-                Domestic[j] = ScurveData[j, 2].ToString();
-                International[j] = ScurveData[j, 3].ToString();
+                Title1.Visible = true;
+                cartesianChart1.Visible = true;
+                metroGrid1.Visible = true;
+
+                for (int j = 0; j < ScurveData.GetLength(0); j++)
+                {
+                    Domestic[j] = ScurveData[j, 2].ToString();
+                    International[j] = ScurveData[j, 3].ToString();
+                }
+                DrawSCurveData1(Domestic, International);
+
+                Domestic.Initialize();
+                International.Initialize();
             }
-            DrawSCurveData1(Domestic, International);
-
-            Domestic.Initialize();
-            International.Initialize();
-
-            for (int j = 0; j < ScurveData.GetLength(0); j++)
+            if (mainFrm.CriticalTechnology1.Count >= 2)
             {
-                Domestic[j] = ScurveData[j, 4].ToString();
-                International[j] = ScurveData[j, 5].ToString();
+                Title2.Visible = true;
+                cartesianChart2.Visible = true;
+                metroGrid2.Visible = true;
+
+                for (int j = 0; j < ScurveData.GetLength(0); j++)
+                {
+                    Domestic[j] = ScurveData[j, 4].ToString();
+                    International[j] = ScurveData[j, 5].ToString();
+                }
+                DrawSCurveData2(Domestic, International);
+
+                Domestic.Initialize();
+                International.Initialize();
             }
-            DrawSCurveData2(Domestic, International);
-
-            Domestic.Initialize();
-            International.Initialize();
-
-            for (int j = 0; j < ScurveData.GetLength(0); j++)
+            if (mainFrm.CriticalTechnology1.Count >= 3)
             {
-                Domestic[j] = ScurveData[j, 6].ToString();
-                International[j] = ScurveData[j, 7].ToString();
+                Title3.Visible = true;
+                cartesianChart3.Visible = true;
+                metroGrid3.Visible = true;
+
+                for (int j = 0; j < ScurveData.GetLength(0); j++)
+                {
+                    Domestic[j] = ScurveData[j, 6].ToString();
+                    International[j] = ScurveData[j, 7].ToString();
+                }
+                DrawSCurveData3(Domestic, International);
+
+                Domestic.Initialize();
+                International.Initialize();
             }
-            DrawSCurveData3(Domestic, International);
-
-            Domestic.Initialize();
-            International.Initialize();
-
-            for (int j = 0; j < ScurveData.GetLength(0); j++)
+            if (mainFrm.CriticalTechnology1.Count >= 4)
             {
-                Domestic[j] = ScurveData[j, 8].ToString();
-                International[j] = ScurveData[j, 9].ToString();
+                Title4.Visible = true;
+                cartesianChart4.Visible = true;
+                metroGrid4.Visible = true;
+
+                for (int j = 0; j < ScurveData.GetLength(0); j++)
+                {
+                    Domestic[j] = ScurveData[j, 8].ToString();
+                    International[j] = ScurveData[j, 9].ToString();
+                }
+                DrawSCurveData4(Domestic, International);
             }
-            DrawSCurveData4(Domestic, International);
 
             /*
             double[] xInitial = new double[] { -1, 1 };

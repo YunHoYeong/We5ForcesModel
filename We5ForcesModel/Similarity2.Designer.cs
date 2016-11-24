@@ -53,6 +53,7 @@
             this.ConclusionBox.Name = "ConclusionBox";
             this.ConclusionBox.Size = new System.Drawing.Size(799, 72);
             this.ConclusionBox.TabIndex = 18;
+            this.ConclusionBox.TextChanged += new System.EventHandler(this.ConclusionBox_TextChanged);
             // 
             // LblConclusion
             // 
@@ -153,6 +154,7 @@
             this.metroGrid2.Size = new System.Drawing.Size(799, 196);
             this.metroGrid2.TabIndex = 15;
             this.metroGrid2.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellValueChanged);
+            this.metroGrid2.CurrentCellDirtyStateChanged += new System.EventHandler(this.metroGrid2_CurrentCellDirtyStateChanged);
             this.metroGrid2.SelectionChanged += new System.EventHandler(this.metroGrid2_SelectionChanged);
             // 
             // bunifuCustomLabel2

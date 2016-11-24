@@ -18,6 +18,7 @@ namespace We5ForcesModel
         }
         //  public static bool[] isCompetition = new bool[]
 
+        // private KeyMessageFilter m_filter = null;
         public static string[][] Spec = new string[6][];
         public static string[] SubstitutionData;
         public static double[] Prices;
@@ -81,6 +82,7 @@ namespace We5ForcesModel
                 if(mainFrm.selectSubstitution[i] == true)
                 {
                     metroGrid2.Rows.Add(mainFrm.Substitution[0,i]);
+                    metroGrid2.Rows[metroGrid2.RowCount - 1].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
                     metroGrid2.Rows[metroGrid2.RowCount - 1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     metroGrid2.Rows[metroGrid2.RowCount - 1].Cells[0].Style.BackColor = Color.FromArgb(222, 235, 247);
                 }
@@ -99,8 +101,7 @@ namespace We5ForcesModel
             // 중복을 제거하고 난 뒤, Null 값도 제거하고
             SubstitutionData = GetDistinctValues<string>(SubstitutionData);
             SubstitutionData = SubstitutionData.Where(condition => condition != null).ToArray();
-
-
+            
             // 경쟁무기 개수만큼 열을 추가
             for (int i = 0; i < SubstitutionData.Length; i++)
             {
@@ -123,18 +124,7 @@ namespace We5ForcesModel
                         count++;
                     }
                 }
-                /*
-                // ★나중에 for문하나로 바꿔야함. 범용성
-                metroGrid2.Rows[0].Cells[i + 1].Value = SubstitutionData[i]; // 무기명
-                metroGrid2.Rows[1].Cells[i + 1].Value = mainFrm.Substitution[IndexOf2DArray.Item1, 6];   // 개발국가
-                metroGrid2.Rows[2].Cells[i + 1].Value = mainFrm.Substitution[IndexOf2DArray.Item1, 5];   // 제작사
-                metroGrid2.Rows[8].Cells[i + 1].Value = mainFrm.Substitution[IndexOf2DArray.Item1, 17];   // 선회
-                metroGrid2.Rows[9].Cells[i + 1].Value = mainFrm.Substitution[IndexOf2DArray.Item1, 18];   // 고저
-                metroGrid2.Rows[10].Cells[i + 1].Value = mainFrm.Substitution[IndexOf2DArray.Item1, 26];   // 구동속도
-                metroGrid2.Rows[11].Cells[i + 1].Value = mainFrm.Substitution[IndexOf2DArray.Item1, 39];   // 안정화 정확도
-                metroGrid2.Rows[12].Cells[i + 1].Value = mainFrm.Substitution[IndexOf2DArray.Item1, 38];   // 조준정확도
-                metroGrid2.Rows[13].Cells[i + 1].Value = mainFrm.Substitution[IndexOf2DArray.Item1, 7];   // 단가
-                */
+            
                 for (int j = 1; j < metroGrid2.RowCount; j++)
                 {
                     metroGrid2.Rows[j].Cells[i + 1].Style.BackColor = Color.White;
@@ -164,6 +154,7 @@ namespace We5ForcesModel
             metroGrid2.Rows[0].Cells[metroGrid2.ColumnCount - 1].Value = "설 명";
             metroGrid2.Rows[0].Cells[metroGrid2.ColumnCount - 1].Style.BackColor = Color.FromArgb(255, 242, 204);
             metroGrid2.Rows[0].Cells[metroGrid2.ColumnCount - 1].Style.ForeColor = Color.Black;
+            metroGrid2.Columns[metroGrid2.ColumnCount - 1].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
             for (int j = 1; j < metroGrid2.RowCount; j++)
             {
@@ -207,30 +198,34 @@ namespace We5ForcesModel
             }
             for (int i = 1; i < metroGrid2.RowCount; i++)
             {
-                if (mainFrm.DomesticSpec != null)
+                if (mainFrm.SubstituteDomesticSpec != null)
                 {
-                    if (mainFrm.DomesticSpec[i - 1] != null)
+                    if (mainFrm.SubstituteDomesticSpec[i - 1] != null)
                     {
-                        metroGrid2.Rows[i].Cells[metroGrid2.ColumnCount - 1].Value = mainFrm.DomesticSpec[i - 1];
+                        metroGrid2.Rows[i].Cells[metroGrid2.ColumnCount - 2].Value = mainFrm.SubstituteDomesticSpec[i - 1];
                     }
                 }
+            }
+            for(int i = 1; i < metroGrid2.RowCount; i++)
+            {
+                metroGrid2.Rows[i].Cells[metroGrid2.ColumnCount - 1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            }
+            for(int i = 1; i < metroGrid2.RowCount; i++)
+            {
+                int SpecIndex = Array.IndexOf(mainFrm.FullSpecSubstitution, metroGrid2.Rows[i].Cells[0].Value.ToString());
+                metroGrid2.Rows[i].Cells[metroGrid2.ColumnCount - 1].Value = mainFrm.SubstitutionDescrition[SpecIndex];
             }
             metroGrid2.CurrentCell = null;
         }
         private void InitializeSpec()
         {
-            Spec[0] = new string[] { "개발국가", "제작사", "탑재중량", "운용고도", "운용반경", "체공시간", "최대속도", "단가 ($M)" };
-            Spec[1] = new string[] { "개발국가", "제작사", "길이", "중량", "페이로드", "최대속력", "항속거리", "지속시간", "단가 ($M)" };
-            Spec[2] = new string[] { "개발국가", "제작사", "장착가능화기", "원격 및 수동사격", "표적정보 디지털전시", "화기별 자동장전", "포탑구동 안정화장치", "선회", "고저", "구동속도", "안정화 정확도", "조준 정확도", "단가 ($M)" };
-            Spec[3] = new string[] { "개발국가", "제작사", "레이저 발진 파워", "유효사격 거리", "단가 ($M)" };
-            Spec[4] = new string[] { "개발국가", "제작사", "중량", "직경", "길이", "속력", "항주거리", "운용수심", "추진방식", "유도방식", "호밍방식", "단가 ($M)" };
-            Spec[5] = new string[] { "개발국가", "만재톤수", "건조년도(년)", "최대속력(Kts)", "항속거리(NM)", "진/회수방식", "단가 ($M)" };
+            if (mainFrm.SubstituteDomesticSpec == null) { mainFrm.SubstituteDomesticSpec = new string[mainFrm.selectSubstitution.Where(c => c).Count()]; }
         }
         public DataGridView Dgv { get; set; }
 
         private void Substitute1_Load(object sender, EventArgs e)
         {
-            if(mainFrm.Substitution == null || mainFrm.Substitution.Length == 0)
+            if (mainFrm.Substitution == null || mainFrm.Substitution.Length == 0)
             {
                 noSimilarity.Visible = true;
 
@@ -244,6 +239,9 @@ namespace We5ForcesModel
             }
             else
             {
+             //   m_filter = new KeyMessageFilter(this);
+              //  Application.AddMessageFilter(m_filter);
+
                 noSimilarity.Visible = false;
 
                 bunifuCustomLabel1.Visible = true;
@@ -260,6 +258,8 @@ namespace We5ForcesModel
                 dtgCompetition();
                 Conclusion();
                 saveData();
+
+                ConclusionBox.Text = mainFrm.ETC_Decision_5;
             }
         }
         private void saveData()
@@ -314,7 +314,20 @@ namespace We5ForcesModel
         {
             if (e.ColumnIndex == SubstitutionData.Length + 1 && e.RowIndex > 0)
             {
-                mainFrm.DomesticSpec[e.RowIndex - 1] = metroGrid2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                if(metroGrid2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+                {
+                    mainFrm.SubstituteDomesticSpec[e.RowIndex - 1] = metroGrid2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                }                
+            }
+            if (e.ColumnIndex == SubstitutionData.Length + 2 && e.RowIndex > 0)
+            {
+                if(metroGrid2.Rows[e.RowIndex].Cells[metroGrid2.ColumnCount - 1].Value != null)
+                {
+                    int SpecIndex = Array.IndexOf(mainFrm.FullSpecSubstitution, metroGrid2.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+                    mainFrm.SubstitutionDescrition[SpecIndex] = metroGrid2.Rows[e.RowIndex].Cells[metroGrid2.ColumnCount - 1].Value.ToString();
+                    metroGrid2.Invalidate();
+                }
             }
         }
 
@@ -333,6 +346,49 @@ namespace We5ForcesModel
             {
                 e.Handled = true;
             }
+        }
+
+        private void metroGrid2_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            metroGrid2.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void ConclusionBox_TextChanged(object sender, EventArgs e)
+        {
+            mainFrm.ETC_Decision_5 = ConclusionBox.Text;
+        }
+    }
+    public class KeyMessageFilter : IMessageFilter
+    {
+        private Form m_target = null;
+
+        public KeyMessageFilter(Form targetForm)
+        {
+            m_target = targetForm;
+        }
+
+        private const int WM_KEYDOWN = 0x0100;
+
+        private const int WM_KEYUP = 0x0101;
+
+
+        public bool PreFilterMessage(ref Message m)
+        {
+            if (m.Msg == WM_KEYDOWN)
+            {
+                //Note this ensures Enter is only filtered if in the 
+                // DataGridViewTextBoxEditingControl and Shift is not also  pressed.
+                if (m_target.ActiveControl != null &&
+                    m_target.ActiveControl is DataGridViewTextBoxEditingControl &&
+                    (Keys)m.WParam == Keys.Enter &&
+                    (Control.ModifierKeys & Keys.Shift) != Keys.Shift)
+                {
+                    return true;
+                }
+
+            }
+
+            return false;
         }
     }
 }

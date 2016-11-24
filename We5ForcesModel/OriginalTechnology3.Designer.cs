@@ -119,6 +119,7 @@
             this.chart1.Size = new System.Drawing.Size(390, 277);
             this.chart1.TabIndex = 7;
             this.chart1.Text = "chart1";
+            this.chart1.Visible = false;
             // 
             // chart2
             // 
@@ -153,6 +154,7 @@
             this.chart2.Size = new System.Drawing.Size(390, 277);
             this.chart2.TabIndex = 8;
             this.chart2.Text = "chart2";
+            this.chart2.Visible = false;
             // 
             // chart3
             // 
@@ -187,6 +189,7 @@
             this.chart3.Size = new System.Drawing.Size(390, 277);
             this.chart3.TabIndex = 9;
             this.chart3.Text = "chart3";
+            this.chart3.Visible = false;
             // 
             // chart4
             // 
@@ -221,6 +224,7 @@
             this.chart4.Size = new System.Drawing.Size(390, 277);
             this.chart4.TabIndex = 10;
             this.chart4.Text = "chart4";
+            this.chart4.Visible = false;
             // 
             // Title4
             // 
@@ -233,6 +237,7 @@
             this.Title4.TabIndex = 15;
             this.Title4.Text = "◎ 원천기술별 확보방안";
             this.Title4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Title4.Visible = false;
             // 
             // Title3
             // 
@@ -245,6 +250,7 @@
             this.Title3.TabIndex = 14;
             this.Title3.Text = "◎ 원천기술별 확보방안";
             this.Title3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Title3.Visible = false;
             // 
             // Title2
             // 
@@ -257,6 +263,7 @@
             this.Title2.TabIndex = 13;
             this.Title2.Text = "◎ 원천기술별 확보방안";
             this.Title2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Title2.Visible = false;
             // 
             // Title1
             // 
@@ -269,6 +276,7 @@
             this.Title1.TabIndex = 12;
             this.Title1.Text = "◎ 원천기술별 확보방안";
             this.Title1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Title1.Visible = false;
             // 
             // bunifuFlatButton1
             // 
@@ -303,6 +311,7 @@
             this.bunifuFlatButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton1.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton1.TextFont = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuFlatButton1.Visible = false;
             // 
             // bunifuFlatButton4
             // 
@@ -337,6 +346,7 @@
             this.bunifuFlatButton4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton4.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton4.TextFont = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuFlatButton4.Visible = false;
             // 
             // bunifuFlatButton3
             // 
@@ -371,6 +381,7 @@
             this.bunifuFlatButton3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton3.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton3.TextFont = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuFlatButton3.Visible = false;
             // 
             // bunifuFlatButton2
             // 
@@ -405,6 +416,7 @@
             this.bunifuFlatButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton2.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton2.TextFont = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuFlatButton2.Visible = false;
             // 
             // bunifuFlatButton5
             // 
@@ -439,6 +451,7 @@
             this.bunifuFlatButton5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton5.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton5.TextFont = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuFlatButton5.Visible = false;
             // 
             // bunifuFlatButton10
             // 
@@ -473,6 +486,7 @@
             this.bunifuFlatButton10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton10.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton10.TextFont = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuFlatButton10.Visible = false;
             // 
             // bunifuFlatButton7
             // 
@@ -507,6 +521,7 @@
             this.bunifuFlatButton7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton7.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton7.TextFont = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuFlatButton7.Visible = false;
             // 
             // bunifuFlatButton8
             // 
@@ -541,6 +556,7 @@
             this.bunifuFlatButton8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton8.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton8.TextFont = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuFlatButton8.Visible = false;
             // 
             // bunifuFlatButton9
             // 
@@ -575,6 +591,7 @@
             this.bunifuFlatButton9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton9.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton9.TextFont = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuFlatButton9.Visible = false;
             // 
             // bunifuFlatButton6
             // 
@@ -609,6 +626,7 @@
             this.bunifuFlatButton6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton6.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton6.TextFont = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuFlatButton6.Visible = false;
             // 
             // bunifuFlatButton20
             // 
@@ -643,6 +661,7 @@
             this.bunifuFlatButton20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton20.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton20.TextFont = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuFlatButton20.Visible = false;
             // 
             // bunifuFlatButton17
             // 
@@ -677,6 +696,7 @@
             this.bunifuFlatButton17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton17.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton17.TextFont = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuFlatButton17.Visible = false;
             // 
             // bunifuFlatButton18
             // 
@@ -711,6 +731,7 @@
             this.bunifuFlatButton18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton18.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton18.TextFont = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuFlatButton18.Visible = false;
             // 
             // bunifuFlatButton19
             // 
@@ -745,6 +766,7 @@
             this.bunifuFlatButton19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton19.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton19.TextFont = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuFlatButton19.Visible = false;
             // 
             // bunifuFlatButton16
             // 
@@ -779,6 +801,7 @@
             this.bunifuFlatButton16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton16.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton16.TextFont = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuFlatButton16.Visible = false;
             // 
             // bunifuFlatButton15
             // 
@@ -813,6 +836,7 @@
             this.bunifuFlatButton15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton15.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton15.TextFont = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuFlatButton15.Visible = false;
             // 
             // bunifuFlatButton12
             // 
@@ -847,6 +871,7 @@
             this.bunifuFlatButton12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton12.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton12.TextFont = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuFlatButton12.Visible = false;
             // 
             // bunifuFlatButton13
             // 
@@ -881,6 +906,7 @@
             this.bunifuFlatButton13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton13.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton13.TextFont = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuFlatButton13.Visible = false;
             // 
             // bunifuFlatButton14
             // 
@@ -915,6 +941,7 @@
             this.bunifuFlatButton14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton14.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton14.TextFont = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuFlatButton14.Visible = false;
             // 
             // bunifuFlatButton11
             // 
@@ -949,6 +976,7 @@
             this.bunifuFlatButton11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton11.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton11.TextFont = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bunifuFlatButton11.Visible = false;
             // 
             // OriginalTechnology3
             // 

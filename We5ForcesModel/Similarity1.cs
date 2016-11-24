@@ -178,7 +178,7 @@ namespace We5ForcesModel
                     metroGrid2.Rows[i].Cells[metroGrid2.ColumnCount - 1].Value = mainFrm.DomesticSpec[i - 1];
                 }
             }
-       //     metroGrid2.Rows[1].Cells[metroGrid2.ColumnCount - 1].Value = "대한민국";
+            metroGrid2.Rows[1].Cells[metroGrid2.ColumnCount - 1].Value = "대한민국";
 
             metroGrid2.CurrentCell = null;
 
@@ -241,6 +241,8 @@ namespace We5ForcesModel
                 Conclusion();
 
                 saveData();
+
+                ConclusionBox.Text = mainFrm.ETC_Decision_3;
             }
         }
         private void saveData()
@@ -330,6 +332,11 @@ namespace We5ForcesModel
             {
                 e.Handled = true;
             }
+        }
+
+        private void ConclusionBox_TextChanged(object sender, EventArgs e)
+        {
+            mainFrm.ETC_Decision_3 = ConclusionBox.Text;
         }
     }
 }

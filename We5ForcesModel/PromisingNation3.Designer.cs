@@ -184,6 +184,7 @@
             this.ConclusionBox.Name = "ConclusionBox";
             this.ConclusionBox.Size = new System.Drawing.Size(798, 96);
             this.ConclusionBox.TabIndex = 14;
+            this.ConclusionBox.TextChanged += new System.EventHandler(this.ConclusionBox_TextChanged);
             // 
             // LblConclusion
             // 

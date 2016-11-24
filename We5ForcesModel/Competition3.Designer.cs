@@ -58,7 +58,7 @@
             // myChart
             // 
             this.myChart.Location = new System.Drawing.Point(13, 50);
-            this.myChart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.myChart.Margin = new System.Windows.Forms.Padding(2);
             this.myChart.Name = "myChart";
             this.myChart.Size = new System.Drawing.Size(800, 170);
             this.myChart.TabIndex = 6;
@@ -95,11 +95,12 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.metroGrid2.DefaultCellStyle = dataGridViewCellStyle3;
             this.metroGrid2.DoubleBuffered = true;
+            this.metroGrid2.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.metroGrid2.EnableHeadersVisualStyles = false;
             this.metroGrid2.HeaderBgColor = System.Drawing.Color.SeaGreen;
             this.metroGrid2.HeaderForeColor = System.Drawing.Color.White;
             this.metroGrid2.Location = new System.Drawing.Point(11, 259);
-            this.metroGrid2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroGrid2.Margin = new System.Windows.Forms.Padding(2);
             this.metroGrid2.MultiSelect = false;
             this.metroGrid2.Name = "metroGrid2";
             this.metroGrid2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -121,8 +122,8 @@
             this.metroGrid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.metroGrid2.Size = new System.Drawing.Size(800, 251);
             this.metroGrid2.TabIndex = 7;
-            this.metroGrid2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellClick);
             this.metroGrid2.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellValueChanged);
+            this.metroGrid2.CurrentCellDirtyStateChanged += new System.EventHandler(this.metroGrid2_CurrentCellDirtyStateChanged);
             this.metroGrid2.SelectionChanged += new System.EventHandler(this.metroGrid2_SelectionChanged);
             // 
             // bunifuCustomLabel2
@@ -144,7 +145,7 @@
             this.textBox1.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textBox1.ForeColor = System.Drawing.Color.White;
             this.textBox1.Location = new System.Drawing.Point(11, 244);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(800, 22);
@@ -158,11 +159,12 @@
             this.ConclusionBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ConclusionBox.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ConclusionBox.Location = new System.Drawing.Point(11, 552);
-            this.ConclusionBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ConclusionBox.Margin = new System.Windows.Forms.Padding(2);
             this.ConclusionBox.Multiline = true;
             this.ConclusionBox.Name = "ConclusionBox";
             this.ConclusionBox.Size = new System.Drawing.Size(800, 60);
             this.ConclusionBox.TabIndex = 12;
+            this.ConclusionBox.TextChanged += new System.EventHandler(this.ConclusionBox_TextChanged);
             // 
             // LblConclusion
             // 

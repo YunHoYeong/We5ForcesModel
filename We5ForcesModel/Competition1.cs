@@ -55,7 +55,10 @@ namespace We5ForcesModel
 
             for (int i = 0; i < CompetitionDrawMap.Length; i++)
             {
-                values[WorldCode[WorldName.IndexOf(CompetitionDrawMap[i])]] = r.Next(0, 100); ;
+                if(WorldName.IndexOf(CompetitionDrawMap[i]) != -1)
+                {
+                    values[WorldCode[WorldName.IndexOf(CompetitionDrawMap[i])]] = r.Next(0, 100); ;
+                }
             }
             
             
@@ -107,12 +110,16 @@ namespace We5ForcesModel
             metroGrid1.Rows[0].DefaultCellStyle.BackColor = Color.FromArgb(255, 255, 255);
 
             metroGrid1.Rows[0].Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            
+
+            metroGrid1.Rows[0].ReadOnly = false;
+            metroGrid1.Rows[0].Height = 100;
             metroGrid1.CurrentCell = null;
+            
             foreach (DataGridViewColumn column in metroGrid1.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
+            
         }
         public T[] GetDistinctValues<T>(T[] array)
         {
@@ -296,6 +303,7 @@ namespace We5ForcesModel
             {
                 cntCompetitionWeapon[i] = new int[5];
             }
+    
 
             // 무기 모델별로 권역별 횟수를 Check
             for (int i = 1; i < mainFrm.CompetitionData.GetLength(0); i++)
@@ -422,7 +430,6 @@ namespace We5ForcesModel
             DataGridViewRow row = metroGrid2.Rows[e.RowIndex];// get you required index
                                                          // check the cell value under your specific column and then you can toggle your colors
             row.DefaultCellStyle.BackColor = Color.White;
-
         }
 
         private void bunifuCustomLabel3_Click(object sender, EventArgs e)

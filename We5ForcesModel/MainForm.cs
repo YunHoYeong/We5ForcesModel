@@ -3,31 +3,72 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using System.Drawing.Text;
 using System.Data.OleDb;
 using System.IO;
 using LinqToExcel;
+using System.Runtime.InteropServices;
 
 namespace We5ForcesModel
 {
     public partial class mainFrm : Form
     {
+        //Create your private font collection object.
+       public static PrivateFontCollection pfc = new PrivateFontCollection();
+
         public static int CurrentMenu = 0;
         public static int CurrentPage = 0;
         public static int CurrentWeapon = 2;
         public static int MaximumMenus = 7;
-        public static int[] MaximumPages = new int[] { 3, 3, 3, 3, 3, 1, 1 };
+        public static int[] MaximumPages = new int[] { 3, 2, 2, 3, 3, 1, 1 };
 
         public static string[] DomesticSpec;
+        public static string[] SubstituteDomesticSpec;
+
+        // 각 페이지 기타 의견
+        public static string ETC_Decision_1 = "";
+        public static string ETC_Decision_2 = "";
+        public static string ETC_Decision_3 = "";
+        public static string ETC_Decision_4 = "";
+        public static string ETC_Decision_5 = "";
+        public static string ETC_Decision_6 = "";
+        public static string ETC_Decision_7 = "";
 
         // 가성비를 구하기 위한 항목을 기술경쟁력 표에서 가져옴
         public static string[] SelectedCompetitionMenu;
         public static string[] SelectedSimilarityMenu;
         public static string[] SelectedSubstitutionMenu;
 
+        // 가성비는 모든 데이터를 담는걸로..
+        public static string[,] CostEffectiveCompetitionAndSimilar;
+        public static string[,] CostEffectiveSubstitution;
+        public static string[] SubstitutionDescrition;
+
+        // 원천기술 내용
+
+        public static int IndexCriticalTechonology;
+
+        public static List<string> OrigrinalTechnology1 = new List<string>();
+        public static List<string> OrigrinalTechnology2 = new List<string>();
+
+        public static List<string> CriticalTechnology1 = new List<string>();
+        public static List<string> CriticalTechnology2 = new List<string>();
+        public static List<string> CriticalTechnology3 = new List<string>();
+        public static List<string> CriticalTechnology4 = new List<string>();
+        public static List<string> CriticalTechnology5 = new List<string>();
+        public static List<string> CriticalTechnology6 = new List<string>();
+        public static List<string> CriticalTechnology7 = new List<string>();
+        public static List<string> CriticalTechnology8 = new List<string>();
+        public static List<string> CriticalTechnology9 = new List<string>();
+
+        //SWOT 분석
+        public static string[] SWOT = new string[4];
 
         public mainFrm()
         {
+            this.DoubleBuffered = true;
             InitializeComponent();
+            InitCustomLabelFont();
         }
         // 경쟁/유사/무기체계 DB 데이터
 
@@ -42,8 +83,11 @@ namespace We5ForcesModel
         public static List<string> SimilarityWeapon;
         public static List<string> SubstitutionWeapon;
 
+        public static string[] FullSpecCompetitionAndSimilarity;
+        public static string[] FullSpecSubstitution;
+
         // 원천기술 DB데이터
-        public static object[,] OriginalTechnology;
+        //  public static object[,] OriginalTechnology;
 
         private void bunifuImageButton2_Click(object sender, EventArgs e)
         {
@@ -52,7 +96,7 @@ namespace We5ForcesModel
 
         private void bunifuImageButton3_Click(object sender, EventArgs e)
         {
-            if(this.WindowState == FormWindowState.Normal) { this.WindowState = FormWindowState.Maximized; }
+            if (this.WindowState == FormWindowState.Normal) { this.WindowState = FormWindowState.Maximized; }
             else if (this.WindowState == FormWindowState.Maximized) { this.WindowState = FormWindowState.Normal; }
         }
 
@@ -63,7 +107,7 @@ namespace We5ForcesModel
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
-            if(SlideMenu.Width == 50)
+            if (SlideMenu.Width == 50)
             {
                 SlideMenu.Visible = false;
                 SlideMenu.Width = 260;
@@ -75,12 +119,12 @@ namespace We5ForcesModel
             }
         }
         private void ReadExcelData()
-        {            
+        {
             object missing = Type.Missing;
 
             string ExcelPath = "DB\\3.RCWS.xlsx";
             ExcelPath = System.IO.Path.GetFullPath(ExcelPath);
-            
+
             if (File.Exists(ExcelPath))
             {
                 string sheetName = "Competition";
@@ -111,10 +155,33 @@ namespace We5ForcesModel
                         {
                             CompetitionData[i + 1, j] = ExcelData[i][j].ToString();
                         }
-
                     }
                     break;
                 }
+                // 가성비 초기화
+                // 중복을 제거하고 난 뒤, Null 값도 제거하고
+                string[] CompetitionWeapon = new string[mainFrm.CompetitionData.GetLength(0)];
+                for (int i = 1; i < mainFrm.CompetitionData.GetLength(0); i++)
+                {
+                    CompetitionWeapon[i - 1] = mainFrm.CompetitionData[i, 3].ToString();
+                }
+                CompetitionWeapon = GetDistinctValues<string>(CompetitionWeapon);
+                CompetitionWeapon = CompetitionWeapon.Where(condition => condition != null).ToArray();
+
+                int[][] cntCompetitionWeapon = new int[CompetitionWeapon.Length][];
+                for (int i = 0; i < cntCompetitionWeapon.GetLength(0); i++)
+                {
+                    cntCompetitionWeapon[i] = new int[5];
+                }
+                // 가성비 초기화 (모든 무기 대비, 모든 사항)
+                mainFrm.CostEffectiveCompetitionAndSimilar = new string[CompetitionWeapon.Length, mainFrm.CompetitionData.GetLength(1)];
+                FullSpecCompetitionAndSimilarity = new string[mainFrm.CompetitionData.GetLength(1)];
+                for (int i = 0; i < FullSpecCompetitionAndSimilarity.Length; i++)
+                {
+                    FullSpecCompetitionAndSimilarity[i] = mainFrm.CompetitionData[0, i].ToString();
+                }
+                // 
+
                 // 대체
                 sheetName = "Substitution";
                 ExcelData.Clear();
@@ -147,12 +214,67 @@ namespace We5ForcesModel
                     }
                     break;
                 }
+                // 대체무기에 뭐가 있는지 추출해옴
+                string[] SubstitutionData = new string[Substitution.GetLength(0)];
+                for (int i = 1; i < mainFrm.Substitution.GetLength(0); i++)
+                {
+                    SubstitutionData[i - 1] = mainFrm.Substitution[i, 3].ToString();
+                }
+                // 중복을 제거하고 난 뒤, Null 값도 제거하고
+                SubstitutionData = GetDistinctValues<string>(SubstitutionData);
+                SubstitutionData = SubstitutionData.Where(condition => condition != null).ToArray();
+                SubstitutionWeapon = SubstitutionData.ToList();
+
+                mainFrm.CostEffectiveSubstitution = new string[SubstitutionData.Length, mainFrm.Substitution.GetLength(1)];
+
+                FullSpecSubstitution = new string[Substitution.GetLength(1)];
+                SubstitutionDescrition = new string[Substitution.GetLength(1)];
+
+                for (int i = 0; i < FullSpecSubstitution.Length; i++)
+                {
+                    FullSpecSubstitution[i] = mainFrm.Substitution[0, i].ToString();
+                }
             }
         }
+        public T[] GetDistinctValues<T>(T[] array)
+        {
+            List<T> tmp = new List<T>();
 
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (tmp.Contains(array[i]))
+                    continue;
+                tmp.Add(array[i]);
+            }
+            return tmp.ToArray();
+        }
+        public static void InitCustomLabelFont()
+        {
 
+            //Select your font from the resources.
+            //My font here is "Digireu.ttf"
+            int fontLength = Properties.Resources.NanumGothic.Length;
+
+            // create a buffer to read in to
+            byte[] fontdata = Properties.Resources.NanumGothic;
+
+            // create an unsafe memory block for the font data
+            System.IntPtr data = Marshal.AllocCoTaskMem(fontLength);
+
+            // copy the bytes to the unsafe memory block
+            Marshal.Copy(fontdata, 0, data, fontLength);
+
+            // pass the font to the font collection
+            pfc.AddMemoryFont(data, fontLength);
+
+            // free up the unsafe memory
+            Marshal.FreeCoTaskMem(data);
+        }
         private void mainFrm_Load(object sender, EventArgs e)
         {
+            PrivateFontCollection privateFonts = new PrivateFontCollection();            
+            privateFonts.AddFontFile("NanumGothic.ttf");
+
             ReadExcelData();
             bunifuFlatButton1_Click(sender, e);
         }
@@ -195,6 +317,7 @@ namespace We5ForcesModel
             SubForm.Dock = System.Windows.Forms.DockStyle.Fill;
             panel3.Controls.Add(SubForm);
             SubForm.Show();
+           
         }
         private void Show_Similarity2_Form_In_Panel()
         {
@@ -210,7 +333,7 @@ namespace We5ForcesModel
         private void Show_Substitute1_Form_In_Panel()
         {
             panel3.Controls.Clear();
-            Cursor = Cursors.WaitCursor;
+            this.Cursor = Cursors.WaitCursor;
             // 최초에 대체무기체계의 메뉴를 선정함
             if (mainFrm.Substitution != null && mainFrm.Substitution.Length != 0)
             {
@@ -220,7 +343,8 @@ namespace We5ForcesModel
                     frmSelectSubstitutionMenu.ShowDialog();
                 }
             }
-            Cursor = Cursors.Arrow;
+            this.Cursor = Cursors.Arrow;
+
             Substitute1 SubForm = new Substitute1();
             SubForm.TopLevel = false;
             SubForm.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -230,7 +354,7 @@ namespace We5ForcesModel
         private void Show_Substitute2_Form_In_Panel()
         {
             panel3.Controls.Clear();
-            Substitute2 SubForm = new Substitute2();
+            Substitute3 SubForm = new Substitute3();
             SubForm.TopLevel = false;
             SubForm.Dock = System.Windows.Forms.DockStyle.Fill;
             panel3.Controls.Add(SubForm);
@@ -334,7 +458,15 @@ namespace We5ForcesModel
                 if (CurrentMenu == 0 && CurrentPage == 2) { Show_Competition3_Form_In_Panel(); }
 
                 //유사무기체계
-                if (CurrentMenu == 1 && CurrentPage == 1) { Show_Similarity2_Form_In_Panel(); }
+                if (CurrentMenu == 1 && CurrentPage == 1)
+                {
+                    if (mainFrm.SimilarityWeapon == null || mainFrm.SimilarityWeapon.Count == 0)
+                    {
+                        MessageBox.Show("유사무기체계를 선택해주세요.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        CurrentPage--;
+                    }
+                    else { Show_Similarity2_Form_In_Panel(); }
+                }
                 if (CurrentMenu == 1 && CurrentPage == 2) {  }
 
                 // 대체무기체계

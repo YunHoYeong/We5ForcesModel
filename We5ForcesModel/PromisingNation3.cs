@@ -215,6 +215,7 @@ namespace We5ForcesModel
         {   
             dtgAmerica();
             dtgAfrica();
+            ConclusionBox.Text = mainFrm.ETC_Decision_7;
         }
 
         private void metroGrid1_SelectionChanged(object sender, EventArgs e)
@@ -225,6 +226,11 @@ namespace We5ForcesModel
         private void metroGrid2_SelectionChanged(object sender, EventArgs e)
         {
             metroGrid2.ClearSelection();
+        }
+
+        private void ConclusionBox_TextChanged(object sender, EventArgs e)
+        {
+            mainFrm.ETC_Decision_7 = ConclusionBox.Text;
         }
     }
 }
