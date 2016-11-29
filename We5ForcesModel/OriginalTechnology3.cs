@@ -347,7 +347,7 @@ namespace We5ForcesModel
             if (mainFrm.CriticalTechnology1.Count >= 1)
             {
                 List<string> sublist1 = new List<string>();
-                string[] SubList = new string[] {   mainFrm.CriticalTechnology1[0] ,
+                string[] SubList = new string[] {   
                                                     mainFrm.CriticalTechnology2[0],
                                                     mainFrm.CriticalTechnology3[0],
                                                     mainFrm.CriticalTechnology4[0],
@@ -371,7 +371,7 @@ namespace We5ForcesModel
             if (mainFrm.CriticalTechnology1.Count >= 2)
             {
                 List<string> sublist2 = new List<string>();
-                string[] SubList = new string[] {   mainFrm.CriticalTechnology1[1] ,
+                string[] SubList = new string[] {   
                                                     mainFrm.CriticalTechnology2[1],
                                                     mainFrm.CriticalTechnology3[1],
                                                     mainFrm.CriticalTechnology4[1],
@@ -395,7 +395,7 @@ namespace We5ForcesModel
             if (mainFrm.CriticalTechnology1.Count >= 3)
             {
                 List<string> sublist3 = new List<string>();
-                string[] SubList = new string[] {   mainFrm.CriticalTechnology1[2] ,
+                string[] SubList = new string[] {   
                                                     mainFrm.CriticalTechnology2[2],
                                                     mainFrm.CriticalTechnology3[2],
                                                     mainFrm.CriticalTechnology4[2],
@@ -418,7 +418,7 @@ namespace We5ForcesModel
             if (mainFrm.CriticalTechnology1.Count >= 4)
             {
                 List<string> sublist4 = new List<string>();
-                string[] SubList = new string[] {   mainFrm.CriticalTechnology1[3] ,
+                string[] SubList = new string[] {   
                                                     mainFrm.CriticalTechnology2[3],
                                                     mainFrm.CriticalTechnology3[3],
                                                     mainFrm.CriticalTechnology4[3],

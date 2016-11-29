@@ -227,14 +227,14 @@ namespace We5ForcesModel
                             if (NationPoint[i, j] == 3) { metroGrid1.Rows[c].Cells[j + 1].Value = "X"; }
                             else if (NationPoint[i, j] == 2) { metroGrid1.Rows[c].Cells[j + 1].Value = "△"; }
                             else if (NationPoint[i, j] == 1) { metroGrid1.Rows[c].Cells[j + 1].Value = "○"; }
-                            else if (NationPoint[i, j] == 0) { metroGrid1.Rows[c].Cells[j + 1].Value = "☆"; metroGrid1.Rows[c].Cells[j + 1].Style.ForeColor = System.Drawing.Color.Red; }
+                            else if (NationPoint[i, j] == 0) { metroGrid1.Rows[c].Cells[j + 1].Value = "★"; metroGrid1.Rows[c].Cells[j + 1].Style.ForeColor = System.Drawing.Color.Red; }
                         }
                         else
                         {
                             if (NationPoint[i, j] == 0) { metroGrid1.Rows[c].Cells[j + 1].Value = "X"; }
                             else if (NationPoint[i, j] == 1) { metroGrid1.Rows[c].Cells[j + 1].Value = "△"; }
                             else if (NationPoint[i, j] == 2) { metroGrid1.Rows[c].Cells[j + 1].Value = "○"; }
-                            else if (NationPoint[i, j] == 3) { metroGrid1.Rows[c].Cells[j + 1].Value = "☆"; metroGrid1.Rows[c].Cells[j + 1].Style.ForeColor = System.Drawing.Color.Red; }
+                            else if (NationPoint[i, j] == 3) { metroGrid1.Rows[c].Cells[j + 1].Value = "★"; metroGrid1.Rows[c].Cells[j + 1].Style.ForeColor = System.Drawing.Color.Red; }
                         }
 
                     }
@@ -332,28 +332,28 @@ namespace We5ForcesModel
 
             NationPoint = new int[NationDB.GetLength(0) - 1, 8];
 
-            // Update Cell Formatting 3분위수 보다 크면 ☆, 2분위수와 3분위수 사이면 O, △, X
+            // Update Cell Formatting 3분위수 보다 크면 ★, 2분위수와 3분위수 사이면 O, △, X
             // 역으로 계산할 건 따로 해놔야됨
-            string[] SpeicalDigit = new string[] { "X", "△", "○", "☆" };
+            string[] SpeicalDigit = new string[] { "X", "△", "○", "★" };
             for (int i = 0; i < NationPoint.GetLength(0); i++)
             {
                 for (int j = 0; j < 8; j++)
                 {
-                    if (Convert.ToString(NationDB[i + 1, j + 3]) == "X" || Convert.ToString(NationDB[i + 1, j + 3]) == "△" || Convert.ToString(NationDB[i + 1, j + 3]) == "○" || Convert.ToString(NationDB[i + 1, j + 3]) == "☆")
+                    if (Convert.ToString(NationDB[i + 1, j + 3]) == "X" || Convert.ToString(NationDB[i + 1, j + 3]) == "△" || Convert.ToString(NationDB[i + 1, j + 3]) == "○" || Convert.ToString(NationDB[i + 1, j + 3]) == "★")
                     {
                         if (j == 4 || j == 7)
                         {
                             if (Convert.ToString(NationDB[i + 1, j + 3]) == "X") { NationPoint[i, j] = 3; }
                             if (Convert.ToString(NationDB[i + 1, j + 3]) == "△") { NationPoint[i, j] = 2; }
                             if (Convert.ToString(NationDB[i + 1, j + 3]) == "○") { NationPoint[i, j] = 1; }
-                            if (Convert.ToString(NationDB[i + 1, j + 3]) == "☆") { NationPoint[i, j] = 0; }
+                            if (Convert.ToString(NationDB[i + 1, j + 3]) == "★") { NationPoint[i, j] = 0; }
                         }
                         else
                         {
                             if (Convert.ToString(NationDB[i + 1, j + 3]) == "X") { NationPoint[i, j] = 0; }
                             if (Convert.ToString(NationDB[i + 1, j + 3]) == "△") { NationPoint[i, j] = 1; }
                             if (Convert.ToString(NationDB[i + 1, j + 3]) == "○") { NationPoint[i, j] = 2; }
-                            if (Convert.ToString(NationDB[i + 1, j + 3]) == "☆") { NationPoint[i, j] = 3; }
+                            if (Convert.ToString(NationDB[i + 1, j + 3]) == "★") { NationPoint[i, j] = 3; }
                         }                        
                     }
                     if (j == 1) // 외교관계는 0, 0.5, 1, 2로 등급을 메김     
@@ -436,11 +436,12 @@ namespace We5ForcesModel
 
         private void metroGrid1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
+            /*
             metroToolTip1.ToolTipTitle = "무기체계";
             metroToolTip1.ToolTipIcon = ToolTipIcon.Info;
             
             string Column4 = "  ◦ 무기체계 운용여부 (정량)\n" +
-                "- ☆(매우 높음) : 검토대상국가가 해당 무기체계를 보유한 경우(상륙돌격장갑차 탑재용)\n" +
+                "- ★(매우 높음) : 검토대상국가가 해당 무기체계를 보유한 경우(상륙돌격장갑차 탑재용)\n" +
               "- ○(높음) : 유사 / 대체 무기체계를 보유한 경우(소형전술차량탑재 / 지상거치용)\n" +
                " - △(보통) : 기타 비슷한 형태의 무기체계를 보유한 경우\n" +
               "- X(낮음) : 해당 무기체계와 동일하거나 유사/ 대체 또는 비슷한 형태의 무기체계를 미보유한 경우\n";
@@ -455,7 +456,7 @@ namespace We5ForcesModel
                 metroToolTip1.Hide(this.metroGrid1);
             }
             
-
+    */
         }
 
         private void metroToolTip1_Popup(object sender, PopupEventArgs e)

@@ -178,7 +178,7 @@ namespace We5ForcesModel
                     metroGrid2.Rows[i].Cells[metroGrid2.ColumnCount - 1].Value = mainFrm.DomesticSpec[i - 1];
                 }
             }
-            metroGrid2.Rows[1].Cells[metroGrid2.ColumnCount - 1].Value = "대한민국";
+            // metroGrid2.Rows[1].Cells[metroGrid2.ColumnCount - 1].Value = "대한민국";
 
             metroGrid2.CurrentCell = null;
 

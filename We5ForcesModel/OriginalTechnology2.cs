@@ -158,7 +158,7 @@ namespace We5ForcesModel
                 {
                     new AxisSection
                     {
-                       // Label = "전력화 기술수준",
+                       // Label = "실용화 기술수준",
                         FromValue = 90,
                         ToValue = 90,
                         Stroke = new SolidColorBrush(System.Windows.Media.Color.FromRgb(153,180,51)),
@@ -166,7 +166,7 @@ namespace We5ForcesModel
                     },
                     new AxisSection
                     {
-                        Label = "전력화 기술수준",
+                        Label = "실용화 기술수준",
                         FromValue = 95,
                         ToValue = 95,
                         Fill = new SolidColorBrush
@@ -329,7 +329,7 @@ namespace We5ForcesModel
                 {
                     new AxisSection
                     {
-                       // Label = "전력화 기술수준",
+                       // Label = "실용화 기술수준",
                         FromValue = 90,
                         ToValue = 90,
                         Stroke = new SolidColorBrush(System.Windows.Media.Color.FromRgb(153,180,51)),
@@ -337,7 +337,7 @@ namespace We5ForcesModel
                     },
                     new AxisSection
                     {
-                        Label = "전력화 기술수준",
+                        Label = "실용화 기술수준",
                         FromValue = 95,
                         ToValue = 95,
                         Fill = new SolidColorBrush
@@ -503,7 +503,7 @@ namespace We5ForcesModel
                 {
                     new AxisSection
                     {
-                       // Label = "전력화 기술수준",
+                       // Label = "실용화 기술수준",
                         FromValue = 90,
                         ToValue = 90,
                         Stroke = new SolidColorBrush(System.Windows.Media.Color.FromRgb(153,180,51)),
@@ -511,7 +511,7 @@ namespace We5ForcesModel
                     },
                     new AxisSection
                     {
-                        Label = "전력화 기술수준",
+                        Label = "실용화 기술수준",
                         FromValue = 95,
                         ToValue = 95,
                         Fill = new SolidColorBrush
@@ -677,7 +677,7 @@ namespace We5ForcesModel
                 {
                     new AxisSection
                     {
-                       // Label = "전력화 기술수준",
+                       // Label = "실용화 기술수준",
                         FromValue = 90,
                         ToValue = 90,
                         Stroke = new SolidColorBrush(System.Windows.Media.Color.FromRgb(153,180,51)),
@@ -685,7 +685,7 @@ namespace We5ForcesModel
                     },
                     new AxisSection
                     {
-                        Label = "전력화 기술수준",
+                        Label = "실용화 기술수준",
                         FromValue = 95,
                         ToValue = 95,
                         Fill = new SolidColorBrush

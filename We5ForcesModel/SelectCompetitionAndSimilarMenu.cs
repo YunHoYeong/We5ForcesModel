@@ -7,13 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Text; 
 
 namespace We5ForcesModel
 {
     public partial class SelectCompetitionAndSimilarMenu : Form
     {
+        int cntStandardMenu = 13;
+
         public static Label[] CustomLabel;
         public static int PricesIndex = 0;
+
         private static Color[] Theme = new Color[]{
             Color.FromArgb(0, 0, 0),
             Color.FromArgb(255, 255, 255),
@@ -39,7 +43,19 @@ namespace We5ForcesModel
 
         private void SelectCompetitionAndSimilarMenu_Load(object sender, EventArgs e)
         {
-            CustomLabel = new Label[mainFrm.CompetitionData.GetLength(1)];
+            for(int i = 0; i < mainFrm.CompetitionData.GetLength(1); i++)
+            {
+                if (mainFrm.CompetitionData[0, i].ToString().Contains("Prices")  ||
+                      mainFrm.CompetitionData[0, i].ToString().Contains("단가")  ||
+                      mainFrm.CompetitionData[0, i].ToString().Contains("가격"))
+                {
+                    PricesIndex = i;
+                    mainFrm.selectCompetitionAndSimilarity[PricesIndex] = true;
+                    break;
+                }
+            }
+
+            CustomLabel = new Label[mainFrm.CompetitionData.GetLength(1) - cntStandardMenu];
 
             int count = 0;
             int rowIndex = 0;
@@ -56,33 +72,15 @@ namespace We5ForcesModel
             {
                 CustomLabel[count] = new Label();
                 CustomLabel[count].TextAlign = _Alignment;
-                CustomLabel[count].Text = mainFrm.CompetitionData[0, i].ToString();
+                CustomLabel[count].Text = mainFrm.CompetitionData[0, i + cntStandardMenu].ToString();
 
                 CustomLabel[count].MaximumSize = MaxSize;
                 CustomLabel[count].AutoSize = true;
                 CustomLabel[count].Dock = _DockStyle;
                 CustomLabel[count].Font = _Font;
 
-                // 단가는 무조건 true여야 함
-                if (CustomLabel[count].Text.IndexOf("Prices") != -1 ||
-                   CustomLabel[count].Text.IndexOf("단가") != -1 ||
-                   CustomLabel[count].Text.IndexOf("가격") != -1)
-                {
-                    PricesIndex = i;
-                    mainFrm.selectCompetitionAndSimilarity[count] = true;
-                }
-                if (mainFrm.selectCompetitionAndSimilarity[count] == false)
-                {
-                    CustomLabel[count].BackColor = Theme[1];
-                    CustomLabel[count].ForeColor = Theme[0];
-                }
-                else
-                {
-                    CustomLabel[count].BackColor = Theme[Theme.Length - 1];
-                    CustomLabel[count].ForeColor = Theme[1];
-                }
                 CustomLabel[count].Cursor = _Cursor;
-                CustomLabel[count].TabIndex = i + 1;
+                CustomLabel[count].TabIndex = i + 1 + cntStandardMenu;
                 //         CustomLabel[count].ForeColor = Color.FromArgb();
                 tableLayoutPanel1.SuspendLayout();
                 tableLayoutPanel1.Controls.Add(CustomLabel[count], colIndex, rowIndex);
@@ -93,6 +91,7 @@ namespace We5ForcesModel
                 count++;
 
                 colIndex++;
+
                 if (rowIndex == tableLayoutPanel1.RowCount) { rowIndex = 0; }
                 if (colIndex == tableLayoutPanel1.ColumnCount)
                 {
@@ -100,7 +99,10 @@ namespace We5ForcesModel
                     rowIndex++;
                 }
             }
-
+            for(int i = tableLayoutPanel1.RowCount - 1; i > CustomLabel.Length / tableLayoutPanel1.ColumnCount; i--)
+            {
+                tableLayoutPanel1.RowStyles.RemoveAt(i);
+            }
         }
         void MyButtonClick(object sender, EventArgs e)
         {
@@ -119,7 +121,6 @@ namespace We5ForcesModel
 
                 mainFrm.selectCompetitionAndSimilarity[button.TabIndex - 1] = true;
             }
-
         }
         /// <summary>
         /// Double buffer
@@ -140,15 +141,7 @@ namespace We5ForcesModel
             }
             else
             {
-                if (mainFrm.selectCompetitionAndSimilarity[PricesIndex] == false)
-                {
-                    MessageBox.Show("단가는 반드시 선택되어야 합니다. ", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    mainFrm.selectCompetitionAndSimilarity[PricesIndex] = true;
-                    CustomLabel[PricesIndex].BackColor = Theme[Theme.Length - 1];
-                    CustomLabel[PricesIndex].ForeColor = Theme[1];
-                }
-                else { this.Close(); }
-
+                this.Close();
             }
         }
 

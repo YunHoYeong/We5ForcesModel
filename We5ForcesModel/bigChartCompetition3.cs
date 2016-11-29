@@ -18,10 +18,32 @@ namespace We5ForcesModel
         {
             InitializeComponent();
 
+            double[] ChartPrices;
+            string[] ChartWeaponName;
+            if (mainFrm.DomesticSpec[mainFrm.DomesticSpec.Length - 1] != null) // 국내무기체계의 가격이 있으면 + 1
+            {
+                ChartPrices = new double[Competition2.Prices.Length + 1];
+                ChartWeaponName = new string[Competition2.Prices.Length + 1];
+
+                for (int i = 0; i < Competition2.Prices.Length; i++) { ChartPrices[i] = Competition2.Prices[i]; }
+                ChartPrices[ChartPrices.Length - 1] = Convert.ToDouble(mainFrm.DomesticSpec[mainFrm.DomesticSpec.Length - 1]);
+
+                for (int i = 0; i < Competition2.Prices.Length; i++) { ChartWeaponName[i] = Competition2.CompetitionWeapon[i]; }
+                ChartWeaponName[ChartPrices.Length - 1] = "국내무기체계";
+            }
+            else
+            {
+                ChartPrices = new double[Competition2.Prices.Length];
+                ChartPrices = (double[])Competition2.Prices.Clone();
+
+                ChartWeaponName = new string[Competition2.CompetitionWeapon.Length];
+                ChartWeaponName = (string[])Competition2.CompetitionWeapon.Clone();
+            }
+
             cartesianChart1.Series = new SeriesCollection
             {
                 new ColumnSeries { Title = "",
-                    Values = new ChartValues<double>(Competition2.Prices),
+                    Values = new ChartValues<double>(ChartPrices),
                     DataLabels = true,
                     LabelPoint = point => point.Y + "M"}
 
@@ -29,7 +51,7 @@ namespace We5ForcesModel
             cartesianChart1.AxisX.Add(new Axis
             {
                 Title = "Model",
-                Labels = Competition2.CompetitionWeapon,
+                Labels = ChartWeaponName,
             });
 
             cartesianChart1.AxisY.Add(new Axis

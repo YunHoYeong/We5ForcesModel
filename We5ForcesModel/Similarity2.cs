@@ -206,6 +206,7 @@ namespace We5ForcesModel
             dtgCompetition();
             WriteDataGrid();
             Conclusion();
+
             ConclusionBox.Text = mainFrm.ETC_Decision_4;
         }
         private void WriteDataGrid()
@@ -235,7 +236,7 @@ namespace We5ForcesModel
             }
             if (e.RowIndex >= 0 && e.ColumnIndex > 1)
             {
-                int WeaponIndex = mainFrm.CompetitionWeapon.IndexOf(metroGrid2.Rows[e.RowIndex].Cells[0].Value.ToString());
+                int WeaponIndex = mainFrm.SimilarityWeapon.IndexOf(metroGrid2.Rows[e.RowIndex].Cells[0].Value.ToString());
                 int SpecIndex = Array.IndexOf(mainFrm.FullSpecCompetitionAndSimilarity, metroGrid2.Columns[e.ColumnIndex].Name.ToString());
 
                 mainFrm.CostEffectiveCompetitionAndSimilar[WeaponIndex, SpecIndex] = metroGrid2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();

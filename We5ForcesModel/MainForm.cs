@@ -13,8 +13,8 @@ namespace We5ForcesModel
 {
     public partial class mainFrm : Form
     {
-        //Create your private font collection object.
-       public static PrivateFontCollection pfc = new PrivateFontCollection();
+
+        public static PrivateFontCollection NanumGothic = new PrivateFontCollection();
 
         public static int CurrentMenu = 0;
         public static int CurrentPage = 0;
@@ -68,7 +68,6 @@ namespace We5ForcesModel
         {
             this.DoubleBuffered = true;
             InitializeComponent();
-            InitCustomLabelFont();
         }
         // 경쟁/유사/무기체계 DB 데이터
 
@@ -91,7 +90,7 @@ namespace We5ForcesModel
 
         private void bunifuImageButton2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
 
         private void bunifuImageButton3_Click(object sender, EventArgs e)
@@ -248,32 +247,11 @@ namespace We5ForcesModel
             }
             return tmp.ToArray();
         }
-        public static void InitCustomLabelFont()
-        {
-
-            //Select your font from the resources.
-            //My font here is "Digireu.ttf"
-            int fontLength = Properties.Resources.NanumGothic.Length;
-
-            // create a buffer to read in to
-            byte[] fontdata = Properties.Resources.NanumGothic;
-
-            // create an unsafe memory block for the font data
-            System.IntPtr data = Marshal.AllocCoTaskMem(fontLength);
-
-            // copy the bytes to the unsafe memory block
-            Marshal.Copy(fontdata, 0, data, fontLength);
-
-            // pass the font to the font collection
-            pfc.AddMemoryFont(data, fontLength);
-
-            // free up the unsafe memory
-            Marshal.FreeCoTaskMem(data);
-        }
         private void mainFrm_Load(object sender, EventArgs e)
-        {
-            PrivateFontCollection privateFonts = new PrivateFontCollection();            
-            privateFonts.AddFontFile("NanumGothic.ttf");
+        {        
+            NanumGothic.AddFontFile("NanumGothic.ttf");
+
+            bunifuCustomLabel1.Font = new System.Drawing.Font(NanumGothic.Families[0], 15, System.Drawing.FontStyle.Bold);
 
             ReadExcelData();
             bunifuFlatButton1_Click(sender, e);
@@ -439,6 +417,19 @@ namespace We5ForcesModel
             SubForm.Show();
         }
         #endregion
+
+        #region 7. 레포트
+        private void Show_Report_Form_In_Panel()
+        {
+            panel3.Controls.Clear();
+            Report SubForm = new Report();
+            SubForm.TopLevel = false;
+            SubForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel3.Controls.Add(SubForm);
+            SubForm.Show();
+        }
+        #endregion
+
         #region SubPage(Previous, Next)
 
         private void UpdatePagesInfo()
@@ -581,9 +572,9 @@ namespace We5ForcesModel
             CurrentMenu = 6;
             CurrentPage = 0;
             UpdatePagesInfo();
-        }
-       
 
-         #endregion
+            Show_Report_Form_In_Panel();
+        }
+        #endregion
     }
 }

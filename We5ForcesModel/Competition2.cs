@@ -145,8 +145,6 @@ namespace We5ForcesModel
                     metroGrid2.Rows[j].Cells[i + 1].Style.BackColor = Color.White;
                 }
             }
-
-
             #endregion
 
             // Design
@@ -167,8 +165,7 @@ namespace We5ForcesModel
             {
                 metroGrid2.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
-
-
+            
             textBox2.Size = metroGrid2.Rows[0].Cells[metroGrid2.ColumnCount - 1].Size;
             textBox1.Size = new Size(metroGrid2.Size.Width - textBox2.Size.Width , metroGrid2.Size.Height);
             textBox2.Location = new Point(textBox1.Location.X + textBox1.Size.Width - 1, textBox1.Location.Y);
@@ -343,11 +340,13 @@ namespace We5ForcesModel
 
         private void metroGrid2_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            if(metroGrid2.CurrentCell.ColumnIndex == metroGrid2.ColumnCount - 1 &&
-                metroGrid2.CurrentCell.RowIndex == metroGrid2.RowCount - 1)
+            /*
+            if(metroGrid2.CurrentCell.ColumnIndex == metroGrid2.ColumnCount &&
+                metroGrid2.CurrentCell.RowIndex == metroGrid2.RowCount)
             {
                 e.Control.KeyPress += new KeyPressEventHandler(metroGrid2_KeyPress);
             }
+            */
         }
 
         private void metroGrid2_KeyPress(object sender, KeyPressEventArgs e)

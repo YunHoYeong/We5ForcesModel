@@ -18,8 +18,10 @@ namespace We5ForcesModel
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-             Application.Run(new mainFrm());
+            Application.Run(new OpenWeaponDB());
+          //   Application.Run(new mainFrm());
          //  Application.Run(new BublleChart1());
+
         }
     }
 }

@@ -174,6 +174,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SelectCompetitionAndSimilarMenu";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SelectCompetitionAndSimilarMenu";
             this.Load += new System.EventHandler(this.SelectCompetitionAndSimilarMenu_Load);

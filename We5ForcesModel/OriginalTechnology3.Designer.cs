@@ -984,6 +984,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(825, 708);
+            this.Controls.Add(this.Title4);
+            this.Controls.Add(this.Title3);
+            this.Controls.Add(this.Title2);
             this.Controls.Add(this.bunifuFlatButton20);
             this.Controls.Add(this.bunifuFlatButton17);
             this.Controls.Add(this.bunifuFlatButton18);
@@ -1005,9 +1008,6 @@
             this.Controls.Add(this.bunifuFlatButton4);
             this.Controls.Add(this.bunifuFlatButton1);
             this.Controls.Add(this.lbl_Introduction_Title);
-            this.Controls.Add(this.Title4);
-            this.Controls.Add(this.Title3);
-            this.Controls.Add(this.Title2);
             this.Controls.Add(this.Title1);
             this.Controls.Add(this.chart4);
             this.Controls.Add(this.chart3);

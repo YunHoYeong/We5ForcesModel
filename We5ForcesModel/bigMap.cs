@@ -18,10 +18,12 @@ namespace We5ForcesModel
 
             var r = new Random();
             var values = new Dictionary<string, double>();
-
             for (int i = 0; i < Competition1.CompetitionDrawMap.Length; i++)
             {
-                values[Competition1.WorldCode[Competition1.WorldName.IndexOf(Competition1.CompetitionDrawMap[i])]] = r.Next(0, 100); ;
+                if (Competition1.WorldName.IndexOf(Competition1.CompetitionDrawMap[i]) != -1)
+                {
+                    values[Competition1.WorldCode[Competition1.WorldName.IndexOf(Competition1.CompetitionDrawMap[i])]] = r.Next(0, 100); ;
+                }
             }
             geoMap1.HeatMap = values;
             geoMap1.Source = "Maps/World.xml";

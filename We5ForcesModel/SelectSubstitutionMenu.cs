@@ -12,8 +12,11 @@ namespace We5ForcesModel
 {
     public partial class SelectSubstitutionMenu : Form
     {
+        int cntStandardMenu = 13;
+
         public static Label[] CustomLabel;
         public static int PricesIndex = 0;
+
         private static Color[] Theme = new Color[]{
             Color.FromArgb(0, 0, 0),
             Color.FromArgb(255, 255, 255),
@@ -39,7 +42,20 @@ namespace We5ForcesModel
 
         private void SelectSubstitutionMenu_Load(object sender, EventArgs e)
         {
-            CustomLabel = new Label[mainFrm.Substitution.GetLength(1)];
+            for (int i = 0; i < mainFrm.Substitution.GetLength(1); i++)
+            {
+                if (mainFrm.Substitution[0, i].ToString().Contains("Prices") ||
+                      mainFrm.Substitution[0, i].ToString().Contains("단가") ||
+                      mainFrm.Substitution[0, i].ToString().Contains("가격"))
+                {
+                    PricesIndex = i;
+                    mainFrm.selectSubstitution[PricesIndex] = true;
+                    break;
+                }
+            }
+
+
+            CustomLabel = new Label[mainFrm.Substitution.GetLength(1) - cntStandardMenu];
 
             int count = 0;
             int rowIndex = 0;
@@ -56,33 +72,15 @@ namespace We5ForcesModel
             {
                 CustomLabel[count] = new Label();
                 CustomLabel[count].TextAlign = _Alignment;
-                CustomLabel[count].Text = mainFrm.Substitution[0,i].ToString();
+                CustomLabel[count].Text = mainFrm.Substitution[0, i + cntStandardMenu].ToString();
 
                 CustomLabel[count].MaximumSize = MaxSize;
                 CustomLabel[count].AutoSize = true;
                 CustomLabel[count].Dock = _DockStyle;
                 CustomLabel[count].Font = _Font;
 
-                // 단가는 무조건 true여야 함
-                if (CustomLabel[count].Text.IndexOf("Prices") != -1 ||
-                   CustomLabel[count].Text.IndexOf("단가") != -1 ||
-                   CustomLabel[count].Text.IndexOf("가격") != -1)
-                {
-                    PricesIndex = i;
-                    mainFrm.selectSubstitution[count] = true;
-                }
-                if (mainFrm.selectSubstitution[count] == false)
-                {
-                    CustomLabel[count].BackColor = Theme[1];
-                    CustomLabel[count].ForeColor = Theme[0];
-                }
-                else
-                {
-                    CustomLabel[count].BackColor = Theme[Theme.Length - 1];
-                    CustomLabel[count].ForeColor = Theme[1];
-                }
                 CustomLabel[count].Cursor = _Cursor;
-                CustomLabel[count].TabIndex = i + 1;
+                CustomLabel[count].TabIndex = i + 1 + cntStandardMenu;
                 //         CustomLabel[count].ForeColor = Color.FromArgb();
                 tableLayoutPanel1.SuspendLayout();
                 tableLayoutPanel1.Controls.Add(CustomLabel[count], colIndex, rowIndex);
@@ -93,12 +91,17 @@ namespace We5ForcesModel
                 count++;
 
                 colIndex++;
+
                 if (rowIndex == tableLayoutPanel1.RowCount) { rowIndex = 0; }
                 if (colIndex == tableLayoutPanel1.ColumnCount)
                 {
                     colIndex = 0;
                     rowIndex++;
                 }
+            }
+            for (int i = tableLayoutPanel1.RowCount - 1; i > CustomLabel.Length / tableLayoutPanel1.ColumnCount; i--)
+            {
+                tableLayoutPanel1.RowStyles.RemoveAt(i);
             }
 
         }
@@ -133,21 +136,13 @@ namespace We5ForcesModel
         }
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            if(mainFrm.selectSubstitution.Where(c => c).Count() < 5)
+            if (mainFrm.selectSubstitution.Where(c => c).Count() < 5)
             {
                 MessageBox.Show("제원을 5개 이상 선택해주세요.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                if(mainFrm.selectSubstitution[PricesIndex] == false)
-                {
-                    MessageBox.Show("단가는 반드시 선택되어야 합니다. ", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    mainFrm.selectSubstitution[PricesIndex] = true;
-                    CustomLabel[PricesIndex].BackColor = Theme[Theme.Length - 1];
-                    CustomLabel[PricesIndex].ForeColor = Theme[1];
-                }
-                else { this.Close(); }
-                
+                this.Close();
             }
         }
 

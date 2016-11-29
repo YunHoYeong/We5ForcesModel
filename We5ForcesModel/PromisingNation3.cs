@@ -56,14 +56,14 @@ namespace We5ForcesModel
                         if (Convert.ToInt32(metroGrid1.Rows[i].Cells[j + 1].Value) == 3) { metroGrid1.Rows[i].Cells[j + 1].Value = "X"; }
                         else if (Convert.ToInt32(metroGrid1.Rows[i].Cells[j + 1].Value) == 2) { metroGrid1.Rows[i].Cells[j + 1].Value = "△"; }
                         else if (Convert.ToInt32(metroGrid1.Rows[i].Cells[j + 1].Value) == 1) { metroGrid1.Rows[i].Cells[j + 1].Value = "○"; }
-                        else if (Convert.ToInt32(metroGrid1.Rows[i].Cells[j + 1].Value) == 0) { metroGrid1.Rows[i].Cells[j + 1].Value = "☆"; metroGrid1.Rows[i].Cells[j + 1].Style.ForeColor = System.Drawing.Color.Red; }
+                        else if (Convert.ToInt32(metroGrid1.Rows[i].Cells[j + 1].Value) == 0) { metroGrid1.Rows[i].Cells[j + 1].Value = "★"; metroGrid1.Rows[i].Cells[j + 1].Style.ForeColor = System.Drawing.Color.Red; }
                     }
                     else
                     {
                         if (Convert.ToInt32(metroGrid1.Rows[i].Cells[j + 1].Value) == 0) { metroGrid1.Rows[i].Cells[j + 1].Value = "X"; }
                         else if (Convert.ToInt32(metroGrid1.Rows[i].Cells[j + 1].Value) == 1) { metroGrid1.Rows[i].Cells[j + 1].Value = "△"; }
                         else if (Convert.ToInt32(metroGrid1.Rows[i].Cells[j + 1].Value) == 2) { metroGrid1.Rows[i].Cells[j + 1].Value = "○"; }
-                        else if (Convert.ToInt32(metroGrid1.Rows[i].Cells[j + 1].Value) == 3) { metroGrid1.Rows[i].Cells[j + 1].Value = "☆"; metroGrid1.Rows[i].Cells[j + 1].Style.ForeColor = System.Drawing.Color.Red; }
+                        else if (Convert.ToInt32(metroGrid1.Rows[i].Cells[j + 1].Value) == 3) { metroGrid1.Rows[i].Cells[j + 1].Value = "★"; metroGrid1.Rows[i].Cells[j + 1].Style.ForeColor = System.Drawing.Color.Red; }
                     }
                 }
             }
@@ -156,14 +156,14 @@ namespace We5ForcesModel
                         if (Convert.ToInt32(metroGrid2.Rows[i].Cells[j + 1].Value) == 3) { metroGrid2.Rows[i].Cells[j + 1].Value = "X"; }
                         else if (Convert.ToInt32(metroGrid2.Rows[i].Cells[j + 1].Value) == 2) { metroGrid2.Rows[i].Cells[j + 1].Value = "△"; }
                         else if (Convert.ToInt32(metroGrid2.Rows[i].Cells[j + 1].Value) == 1) { metroGrid2.Rows[i].Cells[j + 1].Value = "○"; }
-                        else if (Convert.ToInt32(metroGrid2.Rows[i].Cells[j + 1].Value) == 0) { metroGrid2.Rows[i].Cells[j + 1].Value = "☆"; metroGrid2.Rows[i].Cells[j + 1].Style.ForeColor = System.Drawing.Color.Red; }
+                        else if (Convert.ToInt32(metroGrid2.Rows[i].Cells[j + 1].Value) == 0) { metroGrid2.Rows[i].Cells[j + 1].Value = "★"; metroGrid2.Rows[i].Cells[j + 1].Style.ForeColor = System.Drawing.Color.Red; }
                     }
                     else
                     {
                         if (Convert.ToInt32(metroGrid2.Rows[i].Cells[j + 1].Value) == 0) { metroGrid2.Rows[i].Cells[j + 1].Value = "X"; }
                         else if (Convert.ToInt32(metroGrid2.Rows[i].Cells[j + 1].Value) == 1) { metroGrid2.Rows[i].Cells[j + 1].Value = "△"; }
                         else if (Convert.ToInt32(metroGrid2.Rows[i].Cells[j + 1].Value) == 2) { metroGrid2.Rows[i].Cells[j + 1].Value = "○"; }
-                        else if (Convert.ToInt32(metroGrid2.Rows[i].Cells[j + 1].Value) == 3) { metroGrid2.Rows[i].Cells[j + 1].Value = "☆"; metroGrid2.Rows[i].Cells[j + 1].Style.ForeColor = System.Drawing.Color.Red; }
+                        else if (Convert.ToInt32(metroGrid2.Rows[i].Cells[j + 1].Value) == 3) { metroGrid2.Rows[i].Cells[j + 1].Value = "★"; metroGrid2.Rows[i].Cells[j + 1].Style.ForeColor = System.Drawing.Color.Red; }
                     }
                 }
             }
@@ -208,7 +208,7 @@ namespace We5ForcesModel
                     }
                 }
             }
-
+            
         }
 
         private void PromisingNation3_Load(object sender, EventArgs e)
